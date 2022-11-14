@@ -12,9 +12,11 @@
 
   --gray-50: #f0f0f0;
   --gray-100: #dedede;
+  --gray-150: #c0c0c0;
   --gray-200: #a6a6a6;
   --gray-400: #8d8d8d;
   --gray-600: #6c6c6c;
+  --gray-700: #505050;
 
   --info: #158fff;
   --bg: #f4f4f4;
@@ -57,18 +59,18 @@ body {
   justify-content: center;
 }
 
-.layout {
+#layout {
   position: relative;
   width: 100%;
   max-width: var(--max-width);
-  padding: 0.8rem;
+  padding: 0.8rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 2.2rem;
 }
 
 @media (min-width: 600px) {
-  .layout {
+  #layout {
     padding: 0.5rem 2rem 2rem 2rem;
   }
 }
@@ -248,7 +250,7 @@ footer .stay-updated h3 {
 footer .stay-updated input[type="email"] {
   border: solid 1px var(--gray-100);
   border-radius: 0.5em;
-  height: min(2.8vw, 3em);
+  height: clamp(2.2em, 2.8vw, 3em);
   width: min(100%, 23em);
   padding: 0 1em;
 }
