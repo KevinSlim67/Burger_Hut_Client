@@ -3,6 +3,12 @@ h2 {
   margin-bottom: 1rem;
 }
 
+.center {
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
 .submit {
   font-size: 1.3rem;
   font-weight: 800;
@@ -69,13 +75,60 @@ select {
   background-size: 2rem 2rem;
 }
 
+/* account-details ------------------------- */
 .account-details {
-  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 2.2rem;
-  max-width: 800px;
-  margin: 0 auto;
+}
+
+.left-decoration {
+  position: relative;
+}
+
+.left-decoration::before {
+  display: none;
+  content: "";
+  position: absolute;
+  left: -5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: calc(100% + 20px);
+  border: solid 3px var(--gray-100);
+  border-style: solid none solid solid;
+}
+
+.left-decoration::after {
+  display: none;
+  content: "";
+  position: absolute;
+  left: -5rem;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 60px;
+  height: 60px;
+  background-color: var(--gray-100);
+  border-radius: 10px;
+
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 70%;
+}
+
+.account-details::after {
+  background-image: url(./../assets/icons/user.png);
+}
+
+.address-book::after {
+  background-image: url(./../assets/icons/address.png);
+}
+
+@media (min-width: 1100px) {
+  .left-decoration::before,
+  .left-decoration::after {
+    display: block;
+  }
 }
 
 .account-details h3 {
@@ -140,9 +193,88 @@ select {
   width: 65%;
 }
 
+/* ----------------------------------------- */
+
 hr {
-  max-width: 800px;
-  width: 100%;
   color: rgba(0, 0, 0, 0.1);
-  margin: 3rem auto;
+  margin: 2rem auto !important;
 }
+
+/* address-book ----------------------------- */
+.address-book > p {
+  color: var(--gray-400);
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.address-book .address-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.address-book .address {
+  position: relative;
+  background-color: white;
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 0.5em;
+  -webkit-box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 600px) {
+  .address-book .address {
+    -webkit-box-shadow: 0px 2px 1px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.address-book h3 {
+  color: black;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.address-book .address > p {
+  font-size: 0.9rem;
+  color: var(--gray-600);
+  max-width: 80%;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.address-book .address button {
+  position: absolute;
+  right: 1.5rem;
+  width: clamp(30px, 3vw, 50px);
+  height: clamp(30px, 3vw, 50px);
+  background-color: rgba(0, 0, 0, 0.12);
+  border-style: none;
+  border-radius: 50%;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50%;
+  transition: none;
+}
+
+.address-book .address button:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.address-book .address .delete {
+  top: 1.2rem;
+  background-image: url(./../assets/icons/white_x.png);
+}
+
+.address-book .address .edit {
+  bottom: 1.2rem;
+  background-image: url(./../assets/icons/white_edit.png);
+}
+/* ------------------------------------------ */
