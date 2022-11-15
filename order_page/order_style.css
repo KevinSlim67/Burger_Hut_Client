@@ -112,6 +112,7 @@
 
 .selectors select {
   /* removes default down arrow from select */
+  appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   text-indent: 1px;

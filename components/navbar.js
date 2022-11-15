@@ -12,9 +12,7 @@ class Navbar extends HTMLElement {
                 <a href="">Order</a>
                 <a href="">Contact Us</a>
             </div>
-            <button onClick="">
-                <img class="hamburger" src="./../assets/icons/hamburger.png" alt="" />
-            </button>
+            <button class="hamburger" onClick=""></button>
         </nav>
         `;
     }

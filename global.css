@@ -152,9 +152,21 @@ nav img {
   height: 2.5rem;
 }
 
-nav button {
+nav button.hamburger {
   background-color: transparent;
   border: none;
+  background-image: url(./../assets/icons/hamburger.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 90%;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  transition: none;
+}
+
+nav button.hamburger:hover {
+  filter: hue-rotate(-45deg) brightness(100%);
 }
 
 nav a {
@@ -167,6 +179,21 @@ nav a:visited {
 
 nav a:hover {
   color: var(--primary-500);
+}
+
+@media (min-width: 600px) {
+  nav {
+    background-color: rgba(224, 224, 224, 0.5);
+    border-radius: 0.7rem;
+    padding: 0.2rem 1.2rem;
+  }
+
+  navbar-component {
+    position: sticky;
+    left: 0;
+    top: 0.5rem;
+    z-index: 50;
+  }
 }
 /* ------------------------------------------- */
 
