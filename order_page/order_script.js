@@ -1,6 +1,6 @@
 function showFoodDetail() {
+    hideFoodDetail();
     const body = document.body;
-
     const div = document.createElement('div');
     div.classList.add('food-details');
 
@@ -36,6 +36,8 @@ function showFoodDetail() {
             <img src="../assets/computer/demo_burger.png" alt="food name">
         </div>
     </div>
+    <button class="back" onclick="hideFoodDetail()"></button>
+    <button class="favorite"></button>
     `;
 
     body.append(div);
@@ -51,4 +53,11 @@ function decrementCounter() {
     const counter = document.getElementsByClassName('number')[0];
     let num = parseInt(counter.textContent);
     if (num - 1 >= 0) counter.textContent = --num;
+}
+
+function hideFoodDetail() {
+    const body = document.body;
+
+    const div = document.getElementsByClassName('food-details')[0];
+    if (div !== undefined) body.removeChild(div);
 }
