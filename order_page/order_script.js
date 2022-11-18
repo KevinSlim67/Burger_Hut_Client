@@ -1,22 +1,85 @@
-function showFoodDetail() {
-    hideFoodDetail();
-    const body = document.body;
-    const div = document.createElement('div');
-    div.classList.add('food-details');
+const items = [{
+    name: 'Hamburger',
+    price: 5.99,
+    image: './../assets/computer/demo_burger.png',
+    rating: 4,
+    cookTime: 5
+}, {
+    name: 'Chicken Burger',
+    price: 6.99,
+    image: './../assets/computer/demo_burger.png',
+    rating: 5,
+    cookTime: 3
+}, {
+    name: 'Fish Burger',
+    price: 7.99,
+    image: './../assets/computer/demo_burger.png',
+    rating: 3,
+    cookTime: 6
+}, {
+    name: 'Hamburger',
+    price: 5.99,
+    image: './../assets/computer/demo_burger.png',
+    rating: 4,
+    cookTime: 6
+}, {
+    name: 'Chicken Burger',
+    price: 6.99,
+    image: './../assets/computer/demo_burger.png',
+    rating: 4,
+    cookTime: 3
+}, {
+    name: 'Fish Burger',
+    price: 7.99,
+    image: './../assets/computer/demo_burger.png'
+}];
 
-    div.innerHTML = `
+fillItemsList(items);
+
+//create item card
+function createItem(item) {
+    const { name, price, image } = item;
+    const itemCard = document.createElement('div');
+    itemCard.classList.add('food-card');
+    itemCard.innerHTML =
+        `
+        <img class="picture" src="${image}" alt="${name}" />
+        <div class="content">
+            <h3>${name}</h3>
+            <h4>$${price}</h4>
+        </div>
+        <button class="add"></button>
+        `;
+    itemCard.addEventListener('click', () => showItemDetails(item), false);
+
+    return itemCard;
+}
+
+//fill food list with item cards with the present data
+function fillItemsList(arr) {
+    const list = document.getElementById('food-list');
+    arr.forEach(e => {
+        list.appendChild(createItem(e));
+    });
+}
+
+function createItemDetails(item) {
+    const { name, price, image, ingredients, rating, cookTime } = item;
+    const itemDetails = document.createElement('div');
+    itemDetails.classList.add('food-details');
+    itemDetails.innerHTML = `
     <img src="../assets/computer/demo_burger.png">
     <div class="details">
         <div class="info">
             <div>
                 <div class="split-container">
                     <div class="left">
-                        <h3>Hamburger</h3>
-                        <h5 class="rating">4.2</h5>
-                        <h5 class="cook-time">7 min</h5>
+                        <h3>${name}</h3>
+                        <h5 class="rating">${rating}</h5>
+                        <h5 class="cook-time">${cookTime} min</h5>
                     </div>
                     <div class="right"> 
-                        <h4>$4.99</h4>
+                        <h4>$${price}</h4>
                         <div class="counter">
                         <button onclick="decrementCounter(this)">-</button>
                         <span class="number">0</span>
@@ -33,14 +96,20 @@ function showFoodDetail() {
             <button class="type1 full">Add To Cart</button>
         </div>
         <div class="image">
-            <img src="../assets/computer/demo_burger.png" alt="food name">
+            <img src="${image}" alt="${name}">
         </div>
     </div>
-    <button class="back" onclick="hideFoodDetail()"></button>
+    <button class="back" onclick="hideItemDetails()"></button>
     <button class="favorite"></button>
     `;
+    return itemDetails;
+}
 
-    body.append(div);
+function showItemDetails(item) {
+    hideItemDetails();
+    const body = document.body;
+    const div = createItemDetails(item);
+    body.appendChild(div);
 }
 
 function incrementCounter() {
@@ -55,9 +124,9 @@ function decrementCounter() {
     if (num - 1 >= 0) counter.textContent = --num;
 }
 
-function hideFoodDetail() {
+function hideItemDetails() {
     const body = document.body;
-
-    const div = document.getElementsByClassName('food-details')[0];
-    if (div !== undefined) body.removeChild(div);
+    const itemDetails = document.getElementsByClassName('food-details')[0];
+    if (itemDetails !== undefined) body.removeChild(itemDetails);
 }
+

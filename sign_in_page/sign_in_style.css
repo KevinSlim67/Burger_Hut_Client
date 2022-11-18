@@ -6,24 +6,24 @@ section {
 
 h1 {
   font-size: 2em;
-  width: 13ch;
+  font-weight: 900;
+  width: 20ch;
   text-align: center;
   text-transform: uppercase;
   margin: 1.4em 0 2.6em 0;
   color: white;
+
+  background-image: linear-gradient(
+    92.88deg,
+    var(--primary-200) 9.16%,
+    var(--primary-300) 43.89%,
+    var(--primary-400) 64.72%
+  );
+  padding: 2rem;
+  border-radius: 50% 30px / 100%;
 }
 
 h1::before {
-  content: "";
-  position: absolute;
-  background-image: url(./../assets/shapes/sign_in_shape.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 100vw;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: -1;
 }
 
 @media (min-width: 400px) {

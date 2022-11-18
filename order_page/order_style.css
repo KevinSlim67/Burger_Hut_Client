@@ -247,11 +247,18 @@
   top: 5%;
   right: 5%;
   z-index: 2;
-  transition: all 0.1s ease;
+  transition: none;
+  width: 2em;
+  height: 2em;
+
+  background-image: url(./../assets/icons/add.png);
+  background-position: center;
+  background-size: 50%;
+  background-repeat: no-repeat;
 }
 
 .food-card .add:hover {
-  background-color: var(--primary-400-30);
+  background-color: rgba(0, 128, 0, 0.199);
   transform: translateY(0);
 }
 

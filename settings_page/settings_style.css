@@ -1,18 +1,24 @@
 h2 {
   color: var(--primary-900);
-  margin-bottom: 1rem;
-}
-
-.center {
-  max-width: 800px;
-  margin: 0 auto;
-  width: 100%;
+  margin-bottom: 1em;
+  padding: 0 1em;
+  border-style: none none none solid;
+  border-width: 4px;
+  border-color: var(--primary-500);
 }
 
 .submit {
-  font-size: 1.3rem;
+  font-size: var(--font-size);
+  padding: var(--padding);
+  min-height: var(--height);
   font-weight: 800;
-  margin-top: 2.4rem;
+  margin-top: 2.4em;
+}
+
+form {
+  --height: 2.8em;
+  --font-size: 1.2em;
+  --padding: 0 1em;
 }
 
 .input-box {
@@ -23,10 +29,10 @@ h2 {
 
 .input-box span {
   position: absolute;
-  left: 1rem;
+  left: 1em;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 1.2rem;
+  font-size: var(--font-size);
   color: var(--gray-200);
   z-index: 20;
   pointer-events: none;
@@ -37,11 +43,11 @@ h2 {
   background: transparent;
   border-radius: 5px;
   border: solid 1px var(--gray-150);
-  font-size: 1.2rem;
+  font-size: var(--font-size);
   width: 100%;
-  height: 3.4rem;
-  padding: 0 1rem;
-  outline: none;
+  min-height: var(--height);
+  padding: var(--padding);
+  outline: var(--primary-400) !important;
 }
 
 .style1:focus {
@@ -50,12 +56,12 @@ h2 {
 
 .style1:focus + span,
 .style1:not(:placeholder-shown) + span {
-  font-size: 0.9rem;
+  font-size: 0.9em;
   color: var(--gray-400);
   top: -2px;
   background-color: var(--bg);
-  padding: 0 0.5rem;
-  border-radius: 2rem;
+  padding: 0 0.5em;
+  border-radius: 2em;
 }
 
 .style1:focus + span {
@@ -72,12 +78,17 @@ select {
   -moz-appearance: none;
   text-indent: 1px;
   text-overflow: "";
-  font-size: 1.1rem;
+
+  font-size: var(--font-size);
+  width: 100%;
+  min-height: var(--height);
+  padding: var(--padding);
 
   background-image: url(./../assets/icons/expand_down_2.png);
   background-repeat: no-repeat;
   background-position: right 8px center;
-  background-size: 2rem 2rem;
+  background-size: 2em 2em;
+  border-radius: 5px;
 }
 
 /* account-details ------------------------- */
@@ -155,16 +166,17 @@ select {
 
 .account-details .triple-field > * {
   flex: 1 1 0;
-  padding: 0.7rem 1rem 0.7rem 0.7rem;
-  border-radius: 5px;
 }
 
 .account-details .option {
   border: solid 1px var(--gray-150);
-  padding: 0.7rem 1rem 0.7rem 0.7rem;
+  padding: var(--padding);
   border-radius: 5px;
+  min-height: var(--height);
+  font-size: var(--font-size);
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .account-details input[type="radio"] {
@@ -208,13 +220,6 @@ hr {
 }
 
 /* address-book ----------------------------- */
-.address-book > p {
-  color: var(--gray-400);
-  text-align: center;
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-}
-
 .address-book .address-list {
   width: 100%;
   display: flex;
@@ -316,3 +321,127 @@ hr {
   background-image: url(./../assets/icons/white_edit.png);
 }
 /* ------------------------------------------ */
+
+/* create-address ----------------------------- */
+.create-address input[type="number"]::-webkit-outer-spin-button,
+.create-address input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.create-address input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.create-address {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 60;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-address textarea {
+  height: 15em;
+  padding: 1em;
+  resize: none;
+}
+
+.create-address textarea + span {
+  top: 1.5em;
+}
+
+.create-address textarea:focus + span,
+.create-address textarea:not(:placeholder-shown) + span {
+  font-size: 0.9em !important;
+  top: -2px;
+  background-color: var(--bg);
+  padding: 0 0.5em;
+  border-radius: 2em;
+}
+
+.create-address form {
+  width: 100vw;
+  height: 100vh;
+  font-size: 1rem;
+
+  position: relative;
+  max-width: 1000px;
+  padding: 3rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2em;
+  background-color: var(--bg);
+  
+  box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.2);
+}
+
+.create-address form > button.exit {
+  top: 1rem;
+  right: 1rem;
+  position: absolute;
+  background-color: transparent;
+  border-style: none;
+  border-radius: 50%;
+
+  width: 1.8rem;
+  height: 1.8rem;
+  background-image: url(./../assets/icons/black_x.png);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center;
+  transition: none;
+}
+
+.create-address form > button.exit:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 600px) {
+  .create-address form {
+    height: 80%;
+    padding: 3rem 7rem;
+    overflow-y: scroll;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .create-address .shape1 {
+    position: absolute;
+    top: -5rem;
+    right: -3rem;
+    width: 20rem;
+    height: 22rem;
+    border-radius: 42% 58% 39% 61% / 30% 47% 53% 70%;
+    background-color: var(--primary-400-40);
+  }
+
+  .create-address .shape2 {
+    position: absolute;
+    top: 100%;
+    transform: translateY(-50%) translateX(-50%);
+    left: -3rem;
+    width: 18rem;
+    height: 22rem;
+    border-radius: 57% 43% 83% 17% / 41% 40% 60% 59%;
+    background-color: var(--primary-400-40);
+  }
+
+  .create-address form::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+
+  .create-address form h2 {
+    margin-bottom: 0.8em;
+  }
+}
+/* -------------------------------------------- */

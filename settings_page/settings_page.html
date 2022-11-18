@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./settings_style.css" type="text/css" />
 
     <script src="./../global.js" defer></script>
+    <script src="./settings.js"></script>
     <script src="./date_of_birth.js" defer></script>
     <script src="./country_code.js" defer></script>
     <script src="./../components/navbar.js" defer></script>
@@ -20,139 +21,141 @@
     <div id="layout">
       <navbar-component></navbar-component>
 
-      <form class="account-details center left-decoration">
-        <h2>Edit Account Details</h2>
-        <div class="input-box">
-          <input
-            class="style1"
-            type="text"
-            name="first-name"
-            id="first-name"
-            placeholder=" "
-          />
-          <span>First Name</span>
-        </div>
-
-        <div class="input-box">
-          <input
-            class="style1"
-            type="text"
-            name="last-name"
-            id="last-name"
-            placeholder=" "
-          />
-          <span>Last Name</span>
-        </div>
-
-        <div>
-          <h3>Gender</h3>
-          <div class="triple-field">
-            <div class="option">
-              <label>Male</label>
-              <input type="radio" name="gender" id="male" value="male" />
-            </div>
-            <div class="option">
-              <label>Female</label>
-              <input type="radio" name="gender" id="female" value="female" />
-            </div>
-            <div class="option">
-              <label>Other</label>
-              <input type="radio" name="gender" id="other" value="other" />
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h3>Date of birth</h3>
-          <div class="triple-field">
-            <select name="day" id="day"></select>
-            <select name="month" id="month"></select>
-            <select name="year" id="year"></select>
-          </div>
-        </div>
-
-        <div>
-          <h3>Phone number</h3>
-          <div class="phone-field">
-            <select
+      <main class="sm">
+        <form class="account-details left-decoration">
+          <h2>Edit Account Details</h2>
+          <div class="input-box">
+            <input
               class="style1"
-              name="country-code"
-              id="country-code"
-            ></select>
-            <input class="style1" type="tel" name="phone" id="phone" />
-          </div>
-        </div>
-
-        <input class="type1 full submit" type="submit" value="Save Details" />
-      </form>
-
-      <hr class="center" />
-
-      <section class="address-book center left-decoration">
-        <p>Here all all of your addresses</p>
-
-        <div class="address-list">
-          <div class="address">
-            <h3>Address Name</h3>
-            <p>
-              Area TTTTT TTTTT, City TTTTT TTTTT, Street TTTTT TTTTT, Building
-              Name TTTTT TTTTTT, X Floor, Area TTTTT TTTTT, City TTTTT TTTTT,
-              Street TTTTT TTTTT, Building Name TTTTT TTTTTT, X Floor
-            </p>
-            <button class="delete"></button>
-            <button class="edit"></button>
+              type="text"
+              name="first-name"
+              id="first-name"
+              placeholder=" "
+            />
+            <span>First Name</span>
           </div>
 
-          <div class="address">
-            <h3>Address Name</h3>
-            <p>
-              Area TTTTT TTTTT, City TTTTT TTTTT, Street TTTTT TTTTT, Building
-              Name TTTTT TTTTTT, X Floor, Area TTTTT TTTTT, City TTTTT TTTTT,
-              Street TTTTT TTTTT, Building Name TTTTT TTTTTT, X Floor
-            </p>
-            <button class="delete"></button>
-            <button class="edit"></button>
+          <div class="input-box">
+            <input
+              class="style1"
+              type="text"
+              name="last-name"
+              id="last-name"
+              placeholder=" "
+            />
+            <span>Last Name</span>
           </div>
 
-          <div class="address">
-            <h3>Address Name</h3>
-            <p>
-              Area TTTTT TTTTT, City TTTTT TTTTT, Street TTTTT TTTTT, Building
-              Name TTTTT TTTTTT, X Floor, Area TTTTT TTTTT, City TTTTT TTTTT,
-              Street TTTTT TTTTT, Building Name TTTTT TTTTTT, X Floor
-            </p>
-            <button class="delete"></button>
-            <button class="edit"></button>
+          <div>
+            <h3>Gender</h3>
+            <div class="triple-field">
+              <div class="option">
+                <label>Male</label>
+                <input type="radio" name="gender" id="male" value="male" />
+              </div>
+              <div class="option">
+                <label>Female</label>
+                <input type="radio" name="gender" id="female" value="female" />
+              </div>
+              <div class="option">
+                <label>Other</label>
+                <input type="radio" name="gender" id="other" value="other" />
+              </div>
+            </div>
           </div>
 
-          <div class="address">
-            <h3>Address Name</h3>
-            <p>
-              Area TTTTT TTTTT, City TTTTT TTTTT, Street TTTTT TTTTT, Building
-              Name TTTTT TTTTTT, X Floor, Area TTTTT TTTTT, City TTTTT TTTTT,
-              Street TTTTT TTTTT, Building Name TTTTT TTTTTT, X Floor
-            </p>
-            <button class="delete"></button>
-            <button class="edit"></button>
+          <div>
+            <h3>Date of birth</h3>
+            <div class="triple-field">
+              <select name="day" id="day"></select>
+              <select name="month" id="month"></select>
+              <select name="year" id="year"></select>
+            </div>
           </div>
 
-          <div class="address">
-            <h3>Address Name</h3>
-            <p>
-              Area TTTTT TTTTT, City TTTTT TTTTT, Street TTTTT TTTTT, Building
-              Name TTTTT TTTTTT, X Floor, Area TTTTT TTTTT, City TTTTT TTTTT,
-              Street TTTTT TTTTT, Building Name TTTTT TTTTTT, X Floor
-            </p>
-            <button class="delete"></button>
-            <button class="edit"></button>
+          <div>
+            <h3>Phone number</h3>
+            <div class="phone-field">
+              <select
+                class="style1"
+                name="country-code"
+                id="country-code"
+              ></select>
+              <input class="style1" type="tel" name="phone" id="phone" />
+            </div>
           </div>
 
-          <div class="btn-container">
-            <button class="add"></button>
-            <span>Add New Address</span>
+          <input class="type1 full submit" type="submit" value="Save Details" />
+        </form>
+
+        <hr />
+
+        <section class="address-book left-decoration">
+          <p class="title margin">Here all all of your addresses</p>
+
+          <div class="address-list">
+            <div class="address">
+              <h3>Address Name</h3>
+              <p>
+                Area TTTTT TTTTT, City TTTTT TTTTT, Street TTTTT TTTTT, Building
+                Name TTTTT TTTTTT, X Floor, Area TTTTT TTTTT, City TTTTT TTTTT,
+                Street TTTTT TTTTT, Building Name TTTTT TTTTTT, X Floor
+              </p>
+              <button class="delete"></button>
+              <button class="edit"></button>
+            </div>
+
+            <div class="address">
+              <h3>Address Name</h3>
+              <p>
+                Area TTTTT TTTTT, City TTTTT TTTTT, Street TTTTT TTTTT, Building
+                Name TTTTT TTTTTT, X Floor, Area TTTTT TTTTT, City TTTTT TTTTT,
+                Street TTTTT TTTTT, Building Name TTTTT TTTTTT, X Floor
+              </p>
+              <button class="delete"></button>
+              <button class="edit"></button>
+            </div>
+
+            <div class="address">
+              <h3>Address Name</h3>
+              <p>
+                Area TTTTT TTTTT, City TTTTT TTTTT, Street TTTTT TTTTT, Building
+                Name TTTTT TTTTTT, X Floor, Area TTTTT TTTTT, City TTTTT TTTTT,
+                Street TTTTT TTTTT, Building Name TTTTT TTTTTT, X Floor
+              </p>
+              <button class="delete"></button>
+              <button class="edit"></button>
+            </div>
+
+            <div class="address">
+              <h3>Address Name</h3>
+              <p>
+                Area TTTTT TTTTT, City TTTTT TTTTT, Street TTTTT TTTTT, Building
+                Name TTTTT TTTTTT, X Floor, Area TTTTT TTTTT, City TTTTT TTTTT,
+                Street TTTTT TTTTT, Building Name TTTTT TTTTTT, X Floor
+              </p>
+              <button class="delete"></button>
+              <button class="edit"></button>
+            </div>
+
+            <div class="address">
+              <h3>Address Name</h3>
+              <p>
+                Area TTTTT TTTTT, City TTTTT TTTTT, Street TTTTT TTTTT, Building
+                Name TTTTT TTTTTT, X Floor, Area TTTTT TTTTT, City TTTTT TTTTT,
+                Street TTTTT TTTTT, Building Name TTTTT TTTTTT, X Floor
+              </p>
+              <button class="delete"></button>
+              <button class="edit"></button>
+            </div>
+
+            <div class="btn-container">
+              <button class="add" onclick="createAddress()"></button>
+              <span>Add New Address</span>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
       <footer-component></footer-component>
     </div>
