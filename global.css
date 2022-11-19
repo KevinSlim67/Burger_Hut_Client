@@ -240,7 +240,8 @@ nav a:hover {
     border-radius: 30px 5px;
   }
 
-  nav .extra-links > button:not(.sign) {
+  nav .extra-links > a:not(.sign) {
+    display: block;
     position: relative;
     background-color: transparent;
     border-style: none;
@@ -254,7 +255,7 @@ nav a:hover {
     transition: none;
   }
 
-  nav .extra-links > button:not(.sign)::after {
+  nav .extra-links > a:not(.sign)::after {
     content: '';
     position: absolute;
     left: 0;
@@ -265,31 +266,32 @@ nav a:hover {
     transition: all 0.1s ease;
   }
 
-  nav .extra-links > button:not(.sign):hover {
+  nav .extra-links > a:not(.sign):hover {
     filter: brightness(0.6) sepia(1) saturate(600%);
   }
 
-  nav .extra-links > button:not(.sign):hover::after {
+  nav .extra-links > a:not(.sign):hover::after {
     width: 100%;
   }
 
-  nav .extra-links .favorite {
+  nav .extra-links .nav-favorite {
     background-image: url(./assets/icons/nav_favorite.png);
   }
 
-  nav .extra-links .order-history {
+  nav .extra-links .nav-order-history {
     background-image: url(./assets/icons/nav_order_history.png);
   }
 
-  nav .extra-links .address-book {
+  nav .extra-links .nav-address-book {
     background-image: url(./assets/icons/nav_address_book.png);
   }
 
-  nav .extra-links .settings {
+  nav .extra-links .nav-settings {
     background-image: url(./assets/icons/nav_settings.png);
   }
 
   nav .extra-links .sign {
+    display: block;
     font-size: 1.1em;
     padding: 0.4em 1em;
     border-radius: 20px;

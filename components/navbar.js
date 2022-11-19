@@ -12,16 +12,24 @@ class Navbar extends HTMLElement {
             </div>
             <div class="links">
                 <a href="">About Us</a>
-                <a href="">Order</a>
+                <a href="./../order_page/order_page.html">Order</a>
                 <a href="">Contact Us</a>
             </div>
             <div class="extra-links">
-                <button class="favorite" title="Favorites"></button>
-                <button class="order-history" title="Order History"></button>
-                <button class="address-book" title="Address Book"></button>
-                <button class="settings" title="Settings"></button>
+                <a href="./../favorite_page/favorite.html"
+                 class="nav-favorite" title="Favorites"></a>
+
+                <a href="./../order_history_page/order_history_page.html"
+                 class="nav-order-history" title="Order History"></a>
+
+                <a href="./../settings_page/settings_page.html#address-book"
+                 class="nav-address-book" title="Address Book"></a>
+
+                <a href="./../settings_page/settings_page.html#account-details"
+                 class="nav-settings" title="Settings"></a>
+
                 <span>Username</span>
-                <button class="sign">Sign out</button>
+                <a href="./../sign_in_page/sign_in_page.html" class="sign">Sign out</a>
             </div>
 
             <button class="hamburger" onClick=""></button>

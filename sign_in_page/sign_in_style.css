@@ -4,57 +4,45 @@ section {
   align-items: center;
 }
 
-h1 {
+h2 {
   font-size: 2em;
   font-weight: 900;
   width: 20ch;
   text-align: center;
   text-transform: uppercase;
-  margin: 1.4em 0 2.6em 0;
-  color: white;
+  margin: 0.6em 0 1.5em 0;
 
-  background-image: linear-gradient(
+  padding: 2rem;
+  color: white;
+}
+
+h2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 17rem;
+  border-radius: 10% 10% 37% 35% / 0% 0% 45% 46%;
+  background-color: var(--primary-400);
+  z-index: -1;
+}
+
+@media (min-width: 600px) {
+  h2 {
+    background-image: linear-gradient(
     92.88deg,
     var(--primary-200) 9.16%,
     var(--primary-300) 43.89%,
     var(--primary-400) 64.72%
   );
-  padding: 2rem;
+  margin: 1.4em 0 1.4em 0;
   border-radius: 50% 30px / 100%;
-}
-
-h1::before {
-}
-
-@media (min-width: 400px) {
-  h1::before {
-    top: -12vw;
-  }
-}
-
-@media (min-width: 500px) {
-  h1::before {
-    top: -24vw;
-  }
-}
-
-@media (min-width: 600px) {
-  h1 {
-    position: relative;
-    margin-bottom: 2em;
+  color: white;
   }
 
-  h1::before {
-    background-image: url(./../assets/shapes/sign_in_shape_2.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-
-    width: 100%;
-    height: 100%;
-
-    top: 0;
-    left: 0;
-    scale: 1.8;
+  h2::before {
+    display: none;
   }
 }
 
