@@ -5,7 +5,7 @@ const username = '[Username]';
 
 let image, greeting;
 
-if (currentTime >= 18 && currentTime < 5) {
+if (currentTime >= 18 || currentTime < 5) {
     image = './../assets/icons/moon.png';
     greeting = 'Good Evening';
 } else if (currentTime >= 12 && currentTime < 18) {

@@ -11,9 +11,9 @@ class Navbar extends HTMLElement {
                 <h1>Burger Hut</h1>
             </div>
             <div class="links">
-                <a href="">About Us</a>
+                <a href="./../home_page/home_page.html">Home</a>
                 <a href="./../order_page/order_page.html">Order</a>
-                <a href="">Contact Us</a>
+                <a href="./../contact_page/contact_page.html">Contact Us</a>
             </div>
             <div class="extra-links">
                 <a href="./../favorite_page/favorite.html"

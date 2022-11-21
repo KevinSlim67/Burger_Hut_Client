@@ -246,7 +246,6 @@
   width: min(45vw, 270px);
   height: min(54vw, 340px);
   border-radius: 1.4rem;
-  background-color: black;
   color: white;
   padding: 1rem;
   transition: all 0.1s ease;
@@ -264,7 +263,7 @@
   left: 0;
   border-radius: 1.4rem;
   object-fit: cover;
-  opacity: 75%;
+  filter: brightness(75%);
   z-index: 1;
 }
 
