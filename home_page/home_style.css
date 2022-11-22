@@ -27,6 +27,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .slides-container {
@@ -43,12 +44,12 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 3rem;
-  height: 3rem;
+  width: 1.5rem;
+  height: 1.5rem;
   background-color: rgb(216, 216, 216);
   color: var(--primary-900);
   border: none;
-  font-size: 3rem;
+  font-size: 1.5rem;
   padding: 0;
   cursor: pointer;
   border-radius: 50%;
@@ -59,7 +60,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: 0.2rem;
+  padding-bottom: 0.1rem;
 }
 
 .slide-arrow:hover {
@@ -67,14 +68,18 @@
 }
 
 #slide-arrow-prev {
-  left: 2rem;
+  left: 1rem;
 }
 
 #slide-arrow-next {
-  right: 2rem;
+  right: 1rem;
 }
 
-.slide img {
+.new-food {
+  font-size: 0.8rem;
+}
+
+.new-food img {
   position: absolute;
   top: 0;
   left: 0;
@@ -83,34 +88,81 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
-  filter: brightness(80%);
+  filter: brightness(70%);
 }
 
-.slide .content {
+.new-food .content {
   z-index: 1;
-  width: 50%;
+  width: 75%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1em;
 }
 
+.new-food .content span {
+  background-image: linear-gradient(
+    92.88deg,
+    var(--primary-200) 9.16%,
+    var(--primary-300) 43.89%,
+    var(--primary-400) 64.72%
+  );
+  padding: 0.2em 1em;
+  border-radius: 1em;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9em;
+}
 
-.slide .content h2 {
+.new-food .content h2 {
   font-size: clamp(1.5em, 3.5vw, 5em);
   color: white;
   text-shadow: 1px 1px 1px black;
 }
 
-.slide .content p {
+.new-food .content > * {
+  text-align: center;
+}
+
+.new-food .content p {
   color: white;
   font-weight: 500;
 }
 
-.slide .content a {
+.new-food .content a {
   margin-top: 1em;
   border-radius: 5px;
-  font-size: 1.2em;
+  font-size: 1em;
+  padding: 0.5em 2em;
+}
+
+@media (min-width: 600px) {
+  .slide-arrow {
+    font-size: 3rem;
+    width: 3rem;
+    height: 3rem;
+    padding-bottom: 0.3rem;
+  }
+
+  #slide-arrow-prev {
+    left: 2rem;
+  }
+
+  #slide-arrow-next {
+    right: 2rem;
+  }
+
+  .new-food {
+    font-size: 1rem;
+  }
+
+  .new-food .content {
+    width: 50%;
+  }
+
+  .new-food .content a {
+    font-size: 1.2rem;
+  }
 }
 
 /* ------------------------------------------- */
@@ -167,11 +219,12 @@
 }
 /* -------------------------------------------- */
 
+/* app ---------------------------------------- */
 .app {
   position: relative;
   width: 100%;
   height: clamp(200px, 45vw, 550px);
-  border-radius: 20px;
+  border-radius: 5px;
   font-size: 1rem;
 
   background-image: url(./../assets/home/app_background.png);
@@ -231,3 +284,47 @@
     font-size: 1.5rem;
   }
 }
+/* -------------------------------------------- */
+
+/* hiting--------------------------------------- */
+.hiring {
+  position: relative;
+  width: 100%;
+  height: clamp(200px, 45vw, 550px);
+  border-radius: 5px;
+  font-size: 0.7rem;
+
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(./../assets/home/hiring.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.hiring h2 {
+  color: white;
+  font-size: 2em;
+  text-align: center;
+}
+
+.hiring p {
+  color: white;
+  text-align: center;
+}
+
+.hiring a {
+  margin-top: 1em;
+}
+
+@media (min-width: 600px) {
+  .hiring {
+    font-size: 1rem;
+  }
+}
+/* -------------------------------------------- */
