@@ -7,118 +7,87 @@ section {
 h2 {
   font-size: 2em;
   font-weight: 900;
-  width: 20ch;
   text-align: center;
   text-transform: uppercase;
-  margin: 0.6em 0 1.5em 0;
-
   padding: 2rem;
-  color: white;
+  color: var(--primary-800);
+
 }
 
-h2::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 17rem;
-  border-radius: 10% 10% 37% 35% / 0% 0% 45% 46%;
-  background-color: var(--primary-400);
-  z-index: -1;
-}
-
-@media (min-width: 600px) {
-  h2 {
-    background-image: linear-gradient(
-    92.88deg,
-    var(--primary-200) 9.16%,
-    var(--primary-300) 43.89%,
-    var(--primary-400) 64.72%
-  );
-  margin: 1.4em 0 1.4em 0;
-  border-radius: 50% 30px / 100%;
-  color: white;
-  }
-
-  h2::before {
-    display: none;
-  }
-}
-
-form {
+.auth, .register {
   --input-h: 3em;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.5em;
-  width: 20rem;
-}
-
-form input[type="email"],
-form input[type="password"] {
   width: 100%;
-  height: var(--input-h);
-  padding: 0.5em 1em;
-  border-radius: 0.4em;
+  padding: 3em;
+  background-color: white;
+  border-radius: 5px;
+  margin: 3rem auto;
   border: solid 1px var(--gray-100);
-  font-size: 1.1em;
 }
 
-form input[type="checkbox"] {
-  width: 1.5em;
-  height: 1.5em;
-  margin-right: -0.5em;
+.register {
+  max-width: 38rem;
 }
 
-form .remember-me {
-  width: 100%;
+.auth {
+  max-width: 32rem;
+}
+
+form {
+  --bg: white;
+}
+
+:where(.auth, .register) .buttons {
   display: flex;
+  width: 100%;
+  height: 2.7em;
+  margin-bottom: 1em;
+}
+
+:where(.auth, .register) .buttons > :where(a, a:visited){
+  display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 1em;
-}
-
-form .remember-me label {
-  color: var(--primary-900);
-}
-
-form input.type1,
-form a.type1 {
+  flex: 1 1 0;
+  height: 100%;
+  background-color: transparent;
+  border: solid 1px var(--gray-100);
+  color: var(--gray-700);
+  font-size: 0.9em;
   font-weight: 800;
-  font-size: 1.4em;
-  padding: 0.5em 2em !important;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
 }
 
-form .container {
+:where(.auth, .register) .buttons > a.selected {
+  background-image: linear-gradient(
+    92.88deg,
+    var(--primary-200) 9.16%,
+    var(--primary-300) 43.89%,
+    var(--primary-400) 64.72%
+  );
+  color: white;
+}
+
+.container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 0.7em;
+  gap: 0.5em;
 }
 
-form a {
-  text-decoration: none;
-  color: var(--primary-900);
-}
-
-form a:not(.type1):hover {
-  color: var(--primary-500);
-}
-
-form .small {
+.container .forgot-password {
   font-size: 0.8em;
-  width: 100%;
+  text-decoration: none;
+  color: var(--primary-800);
+  width: fit-content;
+  align-self: flex-end;
 }
 
-form .forgot-password {
-  text-align: right;
-}
-
-form .first-time {
-  text-align: center;
-}
-
-form hr {
-  width: 100%;
-  color: rgba(0, 0, 0, 0.137);
+.container .forgot-password:hover {
+  color: var(--primary-500);
 }

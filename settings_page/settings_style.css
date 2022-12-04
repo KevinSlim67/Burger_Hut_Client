@@ -7,97 +7,6 @@ h2 {
   border-color: var(--primary-500);
 }
 
-.submit {
-  font-size: var(--font-size);
-  padding: var(--padding);
-  min-height: var(--height);
-  font-weight: 800;
-  margin-top: 2.4em;
-}
-
-form {
-  --height: 2.8em;
-  --font-size: 1.2em;
-  --padding: 0 1em;
-}
-
-.input-box {
-  position: relative;
-  width: 100%;
-  height: fit-content;
-}
-
-.input-box span {
-  position: absolute;
-  left: 1em;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: var(--font-size);
-  color: var(--gray-200);
-  z-index: 20;
-  pointer-events: none;
-  transition: all 0.2s ease;
-}
-
-.style1 {
-  background: transparent;
-  border-radius: 5px;
-  border: solid 1px var(--gray-150);
-  font-size: var(--font-size);
-  width: 100%;
-  min-height: var(--height);
-  padding: var(--padding);
-  outline: var(--primary-400) !important;
-}
-
-.style1:focus {
-  border-color: var(--primary-400);
-}
-
-.style1:focus + span,
-.style1:not(:placeholder-shown) + span {
-  font-size: 0.9em;
-  color: var(--gray-400);
-  top: -2px;
-  background-color: var(--bg);
-  padding: 0 0.5em;
-  border-radius: 2em;
-}
-
-.style1:focus + span {
-  color: var(--primary-500);
-}
-
-select {
-  position: relative;
-  background-color: var(--gray-100);
-  color: var(--gray-700);
-  border-style: none;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  text-indent: 1px;
-  text-overflow: "";
-
-  font-size: var(--font-size);
-  width: 100%;
-  min-height: var(--height);
-  padding: var(--padding);
-
-  background-image: url(./../assets/icons/expand_down_2.png);
-  background-repeat: no-repeat;
-  background-position: right 8px center;
-  background-size: 2em 2em;
-  border-radius: 5px;
-}
-
-/* account-details ------------------------- */
-.account-details {
-  display: flex;
-  flex-direction: column;
-  gap: 2.2rem;
-}
-
 .left-decoration {
   position: relative;
 }
@@ -133,7 +42,7 @@ select {
   background-size: 70%;
 }
 
-.account-details::after {
+.account-form::after {
   background-image: url(./../assets/icons/user.png);
 }
 
@@ -147,72 +56,6 @@ select {
     display: block;
   }
 }
-
-.account-details h3 {
-  font-size: 0.8rem;
-  color: var(--gray-600);
-  top: -2px;
-  font-weight: 600;
-  background-color: var(--bg);
-  margin-bottom: 0.5rem;
-}
-
-.account-details .triple-field {
-  width: 100%;
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
-}
-
-.account-details .triple-field > * {
-  flex: 1 1 0;
-}
-
-.account-details .option {
-  border: solid 1px var(--gray-150);
-  padding: var(--padding);
-  border-radius: 5px;
-  min-height: var(--height);
-  font-size: var(--font-size);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.account-details input[type="radio"] {
-  outline: none;
-}
-
-.account-details label {
-  font-size: 1.1rem;
-  color: var(--gray-400);
-}
-
-.account-details .phone-field {
-  display: flex;
-  gap: 1rem;
-}
-
-.account-details #country-code {
-  width: 35%;
-
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  text-indent: 1px;
-  text-overflow: "";
-
-  background-image: url(./../assets/icons/expand_down_2.png);
-  background-repeat: no-repeat;
-  background-position: right 8px center;
-  background-size: 2rem 2rem;
-}
-
-.account-details #phone {
-  width: 65%;
-}
-
-/* ----------------------------------------- */
 
 hr {
   color: rgba(0, 0, 0, 0.1);
