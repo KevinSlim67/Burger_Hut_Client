@@ -33,7 +33,7 @@ input[type="submit"] {
 .style1 {
   background: transparent;
   border-radius: 5px;
-  border: solid 1px var(--gray-150);
+  border: solid 1px var(--gray-100);
   font-size: var(--font-size);
   width: 100%;
   min-height: var(--height);
@@ -126,7 +126,7 @@ select {
 }
 
 .account-form .option {
-  border: solid 1px var(--gray-150);
+  border: solid 1px var(--gray-100);
   padding: var(--padding);
   border-radius: 5px;
   min-height: var(--height);
