@@ -4,6 +4,10 @@ section {
   align-items: center;
 }
 
+form {
+  --bg: var(--bg);
+}
+
 h2 {
   font-size: 2em;
   font-weight: 900;
@@ -11,21 +15,21 @@ h2 {
   text-transform: uppercase;
   padding: 2rem;
   color: var(--primary-800);
-
 }
 
-.auth, .register {
+.auth,
+.register {
   --input-h: 3em;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.5em;
   width: 100%;
-  padding: 3em;
   background-color: white;
+  padding: 1rem 0.5rem;
   border-radius: 5px;
   margin: 3rem auto;
-  border: solid 1px var(--gray-100);
+  border: none;
 }
 
 .register {
@@ -34,6 +38,13 @@ h2 {
 
 .auth {
   max-width: 32rem;
+}
+
+@media (min-width: 600px) {
+  .auth,
+  .register {
+    padding: 3rem;
+  }
 }
 
 form {
@@ -47,7 +58,7 @@ form {
   margin-bottom: 1em;
 }
 
-:where(.auth, .register) .buttons > :where(a, a:visited){
+:where(.auth, .register) .buttons > :where(a, a:visited) {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,7 +69,6 @@ form {
   color: var(--gray-700);
   font-size: 0.9em;
   font-weight: 800;
-  border-radius: 5px;
   cursor: pointer;
   text-decoration: none;
 }
@@ -71,6 +81,18 @@ form {
     var(--primary-400) 64.72%
   );
   color: white;
+}
+
+:where(.auth, .register) .buttons > a:first-of-type {
+  border-radius: 5px 0 0 5px;
+}
+
+:where(.auth, .register) .buttons > a:last-of-type {
+  border-radius: 0 5px 5px 0;
+}
+
+:where(.auth, .register) .buttons > a:not(.selected):hover {
+  background-color: var(--gray-100);
 }
 
 .container {
@@ -90,4 +112,9 @@ form {
 
 .container .forgot-password:hover {
   color: var(--primary-500);
+}
+
+form .message {
+  text-align: center;
+  font-size: 0.9em;
 }

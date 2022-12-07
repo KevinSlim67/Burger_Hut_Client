@@ -1,40 +1,55 @@
-const items = [{
-    name: 'Hamburger',
-    price: 5.99,
-    image: './../assets/computer/demo_burger.png',
-    rating: 4,
-    cookTime: 5
-}, {
-    name: 'Chicken Burger',
-    price: 6.99,
-    image: './../assets/computer/demo_burger.png',
-    rating: 5,
-    cookTime: 3
-}, {
-    name: 'Fish Burger',
-    price: 7.99,
-    image: './../assets/computer/demo_burger.png',
-    rating: 3,
-    cookTime: 6
-}, {
-    name: 'Hamburger',
-    price: 5.99,
-    image: './../assets/computer/demo_burger.png',
-    rating: 4,
-    cookTime: 6
-}, {
-    name: 'Chicken Burger',
-    price: 6.99,
-    image: './../assets/computer/demo_burger.png',
-    rating: 4,
-    cookTime: 3
-}, {
-    name: 'Fish Burger',
-    price: 7.99,
-    image: './../assets/computer/demo_burger.png'
-}];
+const url = "http://localhost:5000/foods";
 
-fillItemsList(items);
+//get all buttons that are supposed to switch the category of items displayed
+const buttons = (() => {
+    const container = document.getElementById('category-list');
+    return container.getElementsByTagName('button');
+})();
+
+//assign every category button the function that lets them retrieve data from server
+for (let i = 0; i < buttons.length; i++) {
+    const category = buttons[i].textContent;
+    buttons[i].onclick = () => getCategoryItems(category);
+}
+
+//remove all items from current list, then get list of food items with specific category from server
+function getCategoryItems(cat) {
+    highlightSelectedItem(cat);
+
+    //empties current food list
+    const foodList = document.getElementById('food-list');
+    foodList.innerHTML = '';
+
+    //fetches new data
+    let items = [];
+    fetch(`${url}/category`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ category: cat })
+    })
+        .then((res) => res.json())
+        .then((res) => {
+            items = res;
+            fillItemsList(items);
+        })
+        .catch((err) => console.error(err));
+}
+
+function highlightSelectedItem(cat) {
+    const container = document.getElementById('category-list');
+    const buttons =  container.getElementsByTagName('button');
+    
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].classList.remove('selected'); //remove select effect from old selected button
+        const text = buttons[i].textContent;
+        if (text === cat) {
+            buttons[i].classList.add('selected'); //add select effect to clicked button
+        }
+    }
+}
 
 //create item card
 function createItem(item) {
@@ -43,7 +58,7 @@ function createItem(item) {
     itemCard.classList.add('food-card');
     itemCard.innerHTML =
         `
-        <img class="picture" src="${image}" alt="${name}" />
+        <img class="picture" src="data:image/png;base64, ${image}" alt="${name}" loading="lazy" />
         <div class="content">
             <h3>${name}</h3>
             <h4>$${price}</h4>
@@ -64,11 +79,11 @@ function fillItemsList(arr) {
 }
 
 function createItemDetails(item) {
-    const { name, price, image, ingredients, rating, cookTime } = item;
+    const { name, price, image, ingredients, rating, cooktime } = item;
     const itemDetails = document.createElement('div');
     itemDetails.classList.add('food-details');
     itemDetails.innerHTML = `
-    <img src="../assets/computer/demo_burger.png">
+    <img src="${image}">
     <div class="details">
         <div class="info">
             <div>
@@ -76,7 +91,7 @@ function createItemDetails(item) {
                     <div class="left">
                         <h3>${name}</h3>
                         <h5 class="rating">${rating}</h5>
-                        <h5 class="cook-time">${cookTime} min</h5>
+                        <h5 class="cook-time">${cooktime} min</h5>
                     </div>
                     <div class="right"> 
                         <h4>$${price}</h4>
@@ -90,13 +105,13 @@ function createItemDetails(item) {
                 <hr>
                 <div>
                     <h5>Ingredients</h5>
-                    <p>Ham, Cheese, Tomato, Lettuce, Pickles, Onion.<p/>
+                    <p>aaaaaa<p/>
                 </div>
             </div>
             <button class="type1 full">Add To Cart</button>
         </div>
         <div class="image">
-            <img src="${image}" alt="${name}">
+            <img src="data:image/png;base64, ${image}" alt="${name}">
         </div>
     </div>
     <button class="back" onclick="hideItemDetails()"></button>

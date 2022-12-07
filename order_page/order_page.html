@@ -15,7 +15,7 @@
     <script src="./../components/footer.js" defer></script>
   </head>
 
-  <body>
+  <body onload="getCategoryItems('Chicken')">
     <div id="layout" class="layout">
       <button class="cart-btn primary-gradiant round">
         <img src="./../assets/icons/cart.png" alt="" />
@@ -59,9 +59,9 @@
         </div>
       </section>
 
-      <section class="category-list">
-        <button>Popular</button>
-        <button>Burger</button>
+      <section id="category-list" class="category-list">
+        <button>Chicken</button>
+        <button>Beef</button>
         <button>Pizza</button>
         <button>Salad</button>
         <button>Sandwish</button>

@@ -5,9 +5,9 @@ form {
 }
 
 input[type="submit"] {
-  font-size: var(--font-size) !important;
-  padding: var(--padding) !important;
-  min-height: var(--height) !important;
+  font-size: var(--font-size);
+  padding: var(--padding);
+  min-height: var(--height);
   font-weight: 800;
   margin-top: 1em;
 }
@@ -169,4 +169,20 @@ select {
 
 .account-form #phone {
   width: 65%;
+}
+
+.account-form .remember-me {
+  display: flex;
+  gap: 0.8em;
+  align-items: center;
+}
+
+.account-form .remember-me input[type="checkbox"] {
+  width: 1.4em;
+  height: 1.4em
+}
+
+.account-form .remember-me p {
+  font-size: 0.9em;
+  color: var(--gray-900);
 }

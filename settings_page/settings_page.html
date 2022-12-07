@@ -13,6 +13,7 @@
     <script src="./settings.js" defer></script>
     <script src="./../components/account_form/country_code.js" defer></script>
     <script src="./../components/account_form/date_of_birth.js" defer></script>
+    <script src="./../components/account_form/lebanon_areas.js" defer></script>
     <script src="./../components/navbar.js" defer></script>
     <script src="./../components/footer.js" defer></script>
   </head>
@@ -152,7 +153,7 @@
             </div>
 
             <div class="btn-container">
-              <button class="add" onclick="createAddress()"></button>
+              <button class="add" onclick="createAddress(); generateLocations();"></button>
               <span>Add New Address</span>
             </div>
           </div>

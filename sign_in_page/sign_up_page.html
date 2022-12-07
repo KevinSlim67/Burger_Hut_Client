@@ -31,7 +31,7 @@
         <form
           class="account-form"
           name="register"
-          onsubmit="authenticateUser(event)"
+          onsubmit="registerUser(event)"
         >
           <div class="double-field">
             <div class="input-box">
@@ -116,9 +116,9 @@
           <div>
             <h3>Date of birth</h3>
             <div class="triple-field">
-              <select name="day" id="day"></select>
-              <select name="month" id="month"></select>
-              <select name="year" id="year"></select>
+              <select name="day" id="day" required></select>
+              <select name="month" id="month" required></select>
+              <select name="year" id="year" required></select>
             </div>
           </div>
 
@@ -127,7 +127,7 @@
             <div class="phone-field">
               <select
                 class="style1"
-                name="country-code"
+                name="countryCode"
                 id="country-code"
               ></select>
               <input class="style1" type="tel" name="phone" id="phone" />
@@ -135,6 +135,7 @@
           </div>
 
           <input class="type1 full submit" type="submit" value="Sign Up" />
+          <div id="message" class="message"></div>
         </form>
       </section>
 

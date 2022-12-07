@@ -210,7 +210,9 @@
   transition: none;
 }
 
-.category-list button:hover {
+
+.category-list button:hover,
+.category-list button.selected {
   background-color: var(--primary-400);
   color: white;
 }
