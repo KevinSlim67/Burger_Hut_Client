@@ -1,4 +1,4 @@
-let userId = sessionStorage.getItem('userId');
+let userId = sessionStorage.getItem('userId') || localStorage.getItem('userId');
 
 let navbar = `
     <nav>
@@ -47,7 +47,7 @@ let signedIn = `
             <a href="./../settings_page/settings_page.html#account-details"
              class="nav-settings" title="Settings"></a>
 
-            <span>${sessionStorage.getItem('firstName')}</span>
+            <span>${sessionStorage.getItem('firstName') || localStorage.getItem('firstName')}</span>
             <button id="sign-out" class="sign">Sign out</button>
         </div>
         

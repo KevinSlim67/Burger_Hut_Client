@@ -83,7 +83,7 @@ function createItemDetails(item) {
     const itemDetails = document.createElement('div');
     itemDetails.classList.add('food-details');
     itemDetails.innerHTML = `
-    <img src="${image}">
+    <img src="data:image/png;base64, ${image}">
     <div class="details">
         <div class="info">
             <div>

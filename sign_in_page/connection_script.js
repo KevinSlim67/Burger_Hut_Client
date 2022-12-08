@@ -136,8 +136,6 @@ function handleAuthenticationStatus(data, rememberMe) {
         case "FOUND":
             //add user id and name to local storage so they can be used across the website
             if (rememberMe) {
-                console.log(rememberMe)
-                setTimeout(() => {}, 5000)
                 localStorage.setItem('userId', id);
                 localStorage.setItem('firstName', firstName);
             }
