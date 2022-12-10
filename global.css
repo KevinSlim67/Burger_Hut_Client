@@ -351,6 +351,10 @@ nav .extra-links span {
     display: block;
   }
 
+  nav a {
+    font-size: 0.9em;
+  }
+
 }
 
 @media (min-width: 1000px) {

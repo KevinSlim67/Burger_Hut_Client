@@ -21,7 +21,6 @@ function getCategoryItems(cat) {
     foodList.innerHTML = '';
 
     //fetches new data
-    let items = [];
     fetch(`${url}/category`, {
         method: "POST",
         headers: {
@@ -32,16 +31,15 @@ function getCategoryItems(cat) {
     })
         .then((res) => res.json())
         .then((res) => {
-            items = res;
-            fillItemsList(items);
+            fillItemsList(res);
         })
         .catch((err) => console.error(err));
 }
 
 function highlightSelectedItem(cat) {
     const container = document.getElementById('category-list');
-    const buttons =  container.getElementsByTagName('button');
-    
+    const buttons = container.getElementsByTagName('button');
+
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].classList.remove('selected'); //remove select effect from old selected button
         const text = buttons[i].textContent;
@@ -53,7 +51,7 @@ function highlightSelectedItem(cat) {
 
 //create item card
 function createItem(item) {
-    const { name, price, image } = item;
+    const { id, name, price, image } = item;
     const itemCard = document.createElement('div');
     itemCard.classList.add('food-card');
     itemCard.innerHTML =
@@ -65,7 +63,16 @@ function createItem(item) {
         </div>
         <button class="add"></button>
         `;
+
+    //get ingredients, capitalize them, then add them to item object
+    getIngredients(id).then((res) => {
+        item.ingredients = [...res].map(i => {
+            return i.charAt(0).toUpperCase() + i.slice(1).toLowerCase();
+        });
+    });
+
     itemCard.addEventListener('click', () => showItemDetails(item), false);
+
 
     return itemCard;
 }
@@ -79,7 +86,17 @@ function fillItemsList(arr) {
 }
 
 function createItemDetails(item) {
-    const { name, price, image, ingredients, rating, cooktime } = item;
+    const { id, name, price, image, rating, cooktime, ingredients } = item;
+
+    const ratingDiv = (rating !== null) ? `<h5 class="rating">${rating}</h5>` : '';
+    const cookTimeDiv = (cooktime !== null) ? `<h5 class="cook-time">${cooktime} min</h5>` : '';
+
+    const ingredientDiv = (ingredients.length > 0) ? ` 
+    <div>
+        <h5>Ingredients</h5>
+        <p>${ingredients.join(' - ')}<p/>
+    </div>` : '';
+
     const itemDetails = document.createElement('div');
     itemDetails.classList.add('food-details');
     itemDetails.innerHTML = `
@@ -90,8 +107,8 @@ function createItemDetails(item) {
                 <div class="split-container">
                     <div class="left">
                         <h3>${name}</h3>
-                        <h5 class="rating">${rating}</h5>
-                        <h5 class="cook-time">${cooktime} min</h5>
+                        ${ratingDiv}
+                        ${cookTimeDiv}
                     </div>
                     <div class="right"> 
                         <h4>$${price}</h4>
@@ -103,10 +120,7 @@ function createItemDetails(item) {
                     </div>
                 </div>
                 <hr>
-                <div>
-                    <h5>Ingredients</h5>
-                    <p>aaaaaa<p/>
-                </div>
+                ${ingredientDiv}
             </div>
             <button class="type1 full">Add To Cart</button>
         </div>
@@ -119,6 +133,24 @@ function createItemDetails(item) {
     `;
     return itemDetails;
 }
+
+const getIngredients = async (id) => {
+    try {
+        const response = await fetch(`${url}/ingredients`, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ id: id })
+        });
+        const data = await response.json();
+        return data;
+    } catch (err) {
+        return [];
+    }
+}
+
 
 function showItemDetails(item) {
     hideItemDetails();
