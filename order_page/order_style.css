@@ -478,6 +478,32 @@
   font-size: 1.5em;
 }
 
+.food-details .cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 3.3rem;
+  padding: 0;
+}
+
+.food-details .cart img {
+  width: 1.8rem;
+  height: 1.8rem;
+  display: block;
+}
+
+@media (min-width: 600px) {
+  .food-details .cart {
+    height: 2.5rem;
+  }
+  
+  .food-details .cart img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
 .food-details .image {
   display: none;
 }

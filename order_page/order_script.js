@@ -122,7 +122,10 @@ function createItemDetails(item) {
                 <hr>
                 ${ingredientDiv}
             </div>
-            <button class="type1 full">Add To Cart</button>
+            <button class="type1 full cart">
+                <img src="./../assets/icons/cart.png" alt="" />
+                Add To Cart
+            </button>
         </div>
         <div class="image">
             <img src="data:image/png;base64, ${image}" alt="${name}">
