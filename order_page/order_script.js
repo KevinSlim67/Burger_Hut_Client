@@ -122,7 +122,7 @@ function createItemDetails(item) {
                 <hr>
                 ${ingredientDiv}
             </div>
-            <button class="type1 full cart">
+            <button class="type1 full cart" onclick="addToCart(${id})">
                 <img src="./../assets/icons/cart.png" alt="" />
                 Add To Cart
             </button>
@@ -180,3 +180,21 @@ function hideItemDetails() {
     if (itemDetails !== undefined) body.removeChild(itemDetails);
 }
 
+function addToCart(foodId) {
+    const userId = sessionStorage.getItem('userId') || localStorage.getItem('userId');
+
+    //adds food item to cart
+    fetch(`${url}/add-to-cart`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId: userId , foodId: foodId })
+    })
+        .then((res) => res.json())
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((err) => console.error(err));
+}
