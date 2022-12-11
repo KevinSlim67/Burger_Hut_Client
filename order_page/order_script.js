@@ -114,7 +114,7 @@ function createItemDetails(item) {
                         <h4>$${price}</h4>
                         <div class="counter">
                         <button onclick="decrementCounter(this)">-</button>
-                        <span class="number">0</span>
+                        <span id="amount" class="number">0</span>
                         <button onclick="incrementCounter(this)">+</button>
                         </div>
                     </div>
@@ -182,7 +182,8 @@ function hideItemDetails() {
 
 function addToCart(foodId) {
     const userId = sessionStorage.getItem('userId') || localStorage.getItem('userId');
-
+    const amount = parseInt(document.getElementById('amount').textContent);
+    if (amount === 0) return; //TODO : Display message that user has to specify an amount
     //adds food item to cart
     fetch(`${url}/add-to-cart`, {
         method: "POST",
@@ -190,11 +191,11 @@ function addToCart(foodId) {
             Accept: "application/json",
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ userId: userId , foodId: foodId })
+        body: JSON.stringify({ userId: userId , foodId: foodId, amount: amount })
     })
         .then((res) => res.json())
         .then((res) => {
-            console.log(res);
+            //TODO : Display message that confirms that data has been sent
         })
         .catch((err) => console.error(err));
 }
