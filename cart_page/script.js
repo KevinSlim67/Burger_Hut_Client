@@ -1,23 +1,14 @@
 const url = "http://localhost:5000/";
 const id = sessionStorage.getItem('userId') || localStorage.getItem('userId');
+// sessionStorage.setItem('cart', '[]');
+// localStorage.setItem('cart', '[]');
 
 getCartItems(id);
 
 //fetches food items in user's cart
 function getCartItems(id) {
-    fetch(`${url}users/cart`, {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId: id })
-    })
-        .then((res) => res.json())
-        .then((res) => {
-            fillCartItems(res);
-        })
-        .catch((err) => console.error(err));
+    const cart = JSON.parse(sessionStorage.getItem('cart'));
+    fillCartItems(cart);
 }
 
 //fill items that user has in their cart
@@ -54,8 +45,8 @@ function createItem(item) {
             <div id="${id}-ingredients"</div>
             <span class="price">$${price * amount}</span>
             <div class="delete">
-                <button onclick="remove('cart-remove-one', ${id})" class="remove-one" title="Remove One"></button>
-                <button onclick="remove('cart-remove-all', ${id})" class="remove-all" title="Remove All"></button>
+                <button onclick="removeOne(${id})" class="remove-one" title="Remove One"></button>
+                <button onclick="removeAll(${id})" class="remove-all" title="Remove All"></button>
             </div>
         </div>
     `;
@@ -89,18 +80,29 @@ function fillIngredients(foodId) {
         .catch((err) => console.error(err));
 }
 
-function remove(type, foodId) {
-    fetch(`${url}foods/${type}`, {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId: id, foodId: foodId })
-    })
-        .then((res) => res.json())
-        .then((res) => {
-            if (res.status === 'SUCCESS') getCartItems(id);
-        })
-        .catch((err) => console.error(err));
+
+function removeOne(foodId) {
+    const cart = JSON.parse(sessionStorage.getItem('cart'));
+    let below0 = false;
+    cart.forEach(i => {
+        if (i.id === foodId) {
+            i.amount = i.amount - 1;
+            if (i.amount <= 0) {
+                removeAll(foodId);
+                below0 = true;
+                return;
+            }
+        }
+    });
+    if (!below0) {
+    sessionStorage.setItem('cart', JSON.stringify(cart));
+    fillCartItems(cart);}
+}
+
+function removeAll(foodId) {
+    const cart = JSON.parse(sessionStorage.getItem('cart'));
+    const newCart = cart.filter(i => i.id !== foodId);
+    console.log(newCart);
+    sessionStorage.setItem('cart', JSON.stringify(newCart));
+    fillCartItems(newCart);
 }

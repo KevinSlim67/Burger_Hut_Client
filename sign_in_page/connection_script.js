@@ -138,9 +138,11 @@ function handleAuthenticationStatus(data, rememberMe) {
             if (rememberMe) {
                 localStorage.setItem('userId', id);
                 localStorage.setItem('firstName', firstName);
+                localStorage.setItem('cart', JSON.stringify([]));
             }
             sessionStorage.setItem('userId', id);
             sessionStorage.setItem('firstName', firstName);
+            sessionStorage.setItem('cart', JSON.stringify([]));
             window.location.replace("./../home_page/home_page.html");
             break;
         case "NOT FOUND":

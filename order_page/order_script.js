@@ -181,21 +181,33 @@ function hideItemDetails() {
 }
 
 function addToCart(foodId) {
-    const userId = sessionStorage.getItem('userId') || localStorage.getItem('userId');
+    const userId = sessionStorage.getItem('userId');
     const amount = parseInt(document.getElementById('amount').textContent);
     if (amount === 0) return; //TODO : Display message that user has to specify an amount
+
     //adds food item to cart
-    fetch(`${url}/add-to-cart`, {
+    fetch(`${url}/id`, {
         method: "POST",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ userId: userId , foodId: foodId, amount: amount })
+        body: JSON.stringify({ id: foodId })
     })
         .then((res) => res.json())
         .then((res) => {
-            //TODO : Display message that confirms that data has been sent
+            //if item already present in cart, just increment amount instead of adding the item again
+            const cart = JSON.parse(sessionStorage.getItem('cart'));
+            let exists = false;
+            cart.forEach(i => {
+                if (i.id === foodId) {
+                    i.amount = i.amount + amount;
+                    exists = true;
+                }
+            })
+            if (!exists) cart.push({ ...res, amount: amount });
+            
+            sessionStorage.setItem('cart', JSON.stringify(cart));
         })
         .catch((err) => console.error(err));
 }

@@ -1,6 +1,15 @@
 let userId = sessionStorage.getItem('userId') || localStorage.getItem('userId');
 if (sessionStorage.getItem('userId') === null) {
     sessionStorage.setItem('userId', localStorage.getItem('userId'));
+    rememberCart();
+}
+
+function rememberCart() {
+    if (!isArray(JSON.parse(sessionStorage.getItem('cart')))) {
+        sessionStorage.setItem('cart', JSON.stringify([]));
+    } else {
+        sessionStorage.setItem('cart', localStorage.getItem('cart'));
+    }
 }
 
 let navbar = `
