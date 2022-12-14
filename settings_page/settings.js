@@ -116,7 +116,6 @@ function getDistrictCities(district) {
                 option.innerText = d;
                 cities.appendChild(option);
             })
-            console.log(cities);
         });
 }
 
@@ -135,7 +134,6 @@ function addAddress(e) {
     })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
             getAddresses();
             //TO DO : Send confirmation message or error message depending on the result
         })
@@ -163,16 +161,25 @@ function extractData() {
 }
 
 function createAddressBox(address) {
-    const { name, district, city, street, buildingName, floorNumber, roomNumber, companyName, landmark } = address;
+    const { name, district, city, street_name, building_name, floor_number, room_number, company_name, landmark } = address;
+    const streetField = street_name !== null ? `, ${street_name}`: '';
+    const buildingField = building_name !== null ? `${building_name} Building`: '';
+    const floorNumField = floor_number !== null ? `Floor ${floor_number}`: '';
+    const roomNumField = room_number!== null ? `Room ${room_number}`: '';
+    const companyNameField = company_name !== null ? `At ${company_name}`: '';
+    const landmarkField = landmark !== null ? `Near ${landmark}`: '';
+
+
     const addressBox = document.createElement('div');
     addressBox.classList.add('address');
     addressBox.innerHTML = `
         <h3>${name}</h3>
-        <p>
-            ${district} District, ${city}, ${street}, ${buildingName} Building, ${floorNumber}
-            Floor, Room ${roomNumber}, near ${landmark}
-        </p>
-        <button class="delete"></button>
+        <p> ${district} District, ${city} ${streetField} </p>
+        <p>${[buildingField, floorNumField, roomNumField].filter(e => e !== '').join(', ')} </p>
+        <p>${[companyNameField, landmarkField].filter(e => e !== '').join(' - ')} </p>
+        
+
+        <button class="delete" onclick="deleteAddress(${name})"></button>
         <button class="edit"></button>
     `;
     return addressBox;
@@ -206,4 +213,22 @@ function fillAddressBook(arr) {
     arr.forEach(e => {
         list.appendChild(createAddressBox(e));
     });
+}
+
+function deleteAddress(name) {
+ //fetches new data
+ fetch(`${url}/delete-address`, {
+    method: "DELETE",
+    headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+    },
+    body: JSON.stringify({userId: sessionStorage.getItem('userId'), name: name })
+})
+    .then((res) => res.json())
+    .then((res) => {
+        console.log(res); //TO DO : Handle returned status;
+        getAddresses();
+    })
+    .catch((err) => console.error(err));
 }
