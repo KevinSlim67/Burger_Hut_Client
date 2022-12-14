@@ -13,7 +13,6 @@
     <script src="./settings.js" defer></script>
     <script src="./../components/account_form/country_code.js" defer></script>
     <script src="./../components/account_form/date_of_birth.js" defer></script>
-    <script src="./../components/account_form/lebanon_areas.js" defer></script>
     <script src="./../components/navbar.js" defer></script>
     <script src="./../components/footer.js" defer></script>
   </head>
@@ -95,67 +94,10 @@
 
         <section id="address-book" class="address-book left-decoration">
           <p class="title margin">Here all all of your addresses</p>
-
-          <div class="address-list">
-            <div class="address">
-              <h3>Address Name</h3>
-              <p>
-                Area TTTTT TTTTT, City TTTTT TTTTT, Street TTTTT TTTTT, Building
-                Name TTTTT TTTTTT, X Floor, Area TTTTT TTTTT, City TTTTT TTTTT,
-                Street TTTTT TTTTT, Building Name TTTTT TTTTTT, X Floor
-              </p>
-              <button class="delete"></button>
-              <button class="edit"></button>
-            </div>
-
-            <div class="address">
-              <h3>Address Name</h3>
-              <p>
-                Area TTTTT TTTTT, City TTTTT TTTTT, Street TTTTT TTTTT, Building
-                Name TTTTT TTTTTT, X Floor, Area TTTTT TTTTT, City TTTTT TTTTT,
-                Street TTTTT TTTTT, Building Name TTTTT TTTTTT, X Floor
-              </p>
-              <button class="delete"></button>
-              <button class="edit"></button>
-            </div>
-
-            <div class="address">
-              <h3>Address Name</h3>
-              <p>
-                Area TTTTT TTTTT, City TTTTT TTTTT, Street TTTTT TTTTT, Building
-                Name TTTTT TTTTTT, X Floor, Area TTTTT TTTTT, City TTTTT TTTTT,
-                Street TTTTT TTTTT, Building Name TTTTT TTTTTT, X Floor
-              </p>
-              <button class="delete"></button>
-              <button class="edit"></button>
-            </div>
-
-            <div class="address">
-              <h3>Address Name</h3>
-              <p>
-                Area TTTTT TTTTT, City TTTTT TTTTT, Street TTTTT TTTTT, Building
-                Name TTTTT TTTTTT, X Floor, Area TTTTT TTTTT, City TTTTT TTTTT,
-                Street TTTTT TTTTT, Building Name TTTTT TTTTTT, X Floor
-              </p>
-              <button class="delete"></button>
-              <button class="edit"></button>
-            </div>
-
-            <div class="address">
-              <h3>Address Name</h3>
-              <p>
-                Area TTTTT TTTTT, City TTTTT TTTTT, Street TTTTT TTTTT, Building
-                Name TTTTT TTTTTT, X Floor, Area TTTTT TTTTT, City TTTTT TTTTT,
-                Street TTTTT TTTTT, Building Name TTTTT TTTTTT, X Floor
-              </p>
-              <button class="delete"></button>
-              <button class="edit"></button>
-            </div>
-
-            <div class="btn-container">
-              <button class="add" onclick="createAddress(); generateLocations();"></button>
-              <span>Add New Address</span>
-            </div>
+          <div id="address-list" class="address-list"></div>
+          <div class="btn-container">
+            <button class="add" onclick="createAddress()"></button>
+            <span>Add New Address</span>
           </div>
         </section>
       </main>

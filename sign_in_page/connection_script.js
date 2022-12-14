@@ -138,7 +138,6 @@ function handleAuthenticationStatus(data, rememberMe) {
             if (rememberMe) {
                 localStorage.setItem('userId', id);
                 localStorage.setItem('firstName', firstName);
-                localStorage.setItem('cart', JSON.stringify([]));
             }
             sessionStorage.setItem('userId', id);
             sessionStorage.setItem('firstName', firstName);

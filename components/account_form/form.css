@@ -59,6 +59,50 @@ input[type="submit"] {
   color: var(--primary-500);
 }
 
+.input-box textarea.style1 + span {
+  position: absolute;
+  left: 1em;
+  top: 1.5em;
+  transform: translateY(-50%);
+  font-size: var(--font-size);
+  color: var(--gray-200);
+  z-index: 20;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.input-box textarea.style1 {
+  background: transparent;
+  border-radius: 5px;
+  border: solid 1px var(--gray-100);
+  font-size: var(--font-size);
+  width: 100%;
+  min-height: var(--height);
+  height: 10em;
+  padding: 0.8em;
+  outline: var(--primary-400) !important;
+  resize: none;
+}
+
+textarea.style1:focus + span,
+textarea.style1:not(:placeholder-shown) + span {
+  font-size: 0.9em;
+  color: var(--gray-400);
+  top: -2px;
+  background-color: var(--bg);
+  padding: 0 0.5em;
+  border-radius: 2em;
+}
+
+textarea.style1:focus {
+  border-color: var(--primary-400);
+}
+
+textarea.style1:focus + span {
+  color: var(--primary-500);
+}
+
+
 select {
   position: relative;
   background-color: var(--gray-100);
@@ -111,8 +155,8 @@ select {
 }
 
 .account-form .double-field > * {
-    flex: 1 1 0;
-  }
+  flex: 1 1 0;
+}
 
 .account-form .triple-field {
   width: 100%;
@@ -179,7 +223,7 @@ select {
 
 .account-form .remember-me input[type="checkbox"] {
   width: 1.4em;
-  height: 1.4em
+  height: 1.4em;
 }
 
 .account-form .remember-me p {

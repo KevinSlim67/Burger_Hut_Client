@@ -5,7 +5,7 @@ if (sessionStorage.getItem('userId') === null) {
 }
 
 function rememberCart() {
-    if (!isArray(JSON.parse(sessionStorage.getItem('cart')))) {
+    if (sessionStorage.getItem('cart') === null || sessionStorage.getItem('cart').charAt(0) !== '[') {
         sessionStorage.setItem('cart', JSON.stringify([]));
     } else {
         sessionStorage.setItem('cart', localStorage.getItem('cart'));
