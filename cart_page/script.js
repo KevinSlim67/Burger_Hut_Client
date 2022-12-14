@@ -1,12 +1,13 @@
-const url = "http://localhost:5000/";
+const url = "http://localhost:5000";
 const id = sessionStorage.getItem('userId') || localStorage.getItem('userId');
 // sessionStorage.setItem('cart', '[]');
 // localStorage.setItem('cart', '[]');
 
-getCartItems(id);
+getCartItems();
+getAddresses();
 
 //fetches food items in user's cart
-function getCartItems(id) {
+function getCartItems() {
     const cart = JSON.parse(sessionStorage.getItem('cart'));
     fillCartItems(cart);
 }
@@ -56,7 +57,7 @@ function createItem(item) {
 
 //get ingredients of food, and fill a list of them
 function fillIngredients(foodId) {
-    fetch(`${url}foods/ingredients`, {
+    fetch(`${url}/foods/ingredients`, {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -95,8 +96,9 @@ function removeOne(foodId) {
         }
     });
     if (!below0) {
-    sessionStorage.setItem('cart', JSON.stringify(cart));
-    fillCartItems(cart);}
+        sessionStorage.setItem('cart', JSON.stringify(cart));
+        fillCartItems(cart);
+    }
 }
 
 function removeAll(foodId) {
@@ -105,4 +107,40 @@ function removeAll(foodId) {
     console.log(newCart);
     sessionStorage.setItem('cart', JSON.stringify(newCart));
     fillCartItems(newCart);
+}
+
+function getAddresses() {
+    fetch(`${url}/users/get-addresses`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId: sessionStorage.getItem('userId') })
+    })
+        .then((res) => res.json())
+        .then((res) => {
+            fillAddressList(res);
+        })
+        .catch((err) => console.error(err));
+}
+
+function createAddressBox(address) {
+    const { name, district, city, street_name } = address;
+    const box = document.createElement('div');
+    box.classList.add('address');
+    box.innerHTML = `
+        <h3>${name}</h3>
+        <p> ${district} District, ${city}, ${street_name} </p>
+        <input type="radio" name="address" value="${name}">
+    `;
+    return box;
+}
+
+function fillAddressList(addresses) {
+    const list = document.getElementById('address-list');
+    list.innerHtml = '';
+    addresses.forEach(e => {
+        list.appendChild(createAddressBox(e));
+    })
 }

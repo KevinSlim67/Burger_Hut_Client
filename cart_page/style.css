@@ -8,6 +8,12 @@ h2 {
   margin-bottom: 2em;
 }
 
+.cart {
+  display: flex;
+  flex-direction: column;
+  gap: 4em;
+}
+
 .cart .cart-items {
   width: 100%;
   display: flex;
@@ -113,4 +119,38 @@ h2 {
 
 .cart .cart-items > .item .delete button:hover {
   background-color: rgba(0, 0, 0, 0.05);
+}
+
+.cart .address-list {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.cart .address {
+  position: relative;
+  width: 48%;
+  background-color: white;
+  height: 8em;
+  border-radius: 5px;
+  padding: 1em;
+}
+
+.cart .address h3 {
+  color: var(--gray-900);
+  margin-bottom: 0.6em;
+}
+
+.cart .address p {
+  color: var(--gray-600);
+}
+
+.cart .address input[type="radio"] {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  width: 1.6em;
+  height: 1.6em;
 }

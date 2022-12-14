@@ -53,11 +53,11 @@ let signedIn = `
             <a href="./../order_history_page/order_history_page.html"
              class="nav-order-history" title="Order History"></a>
 
-            <a href="./../settings_page/settings_page.html#address-book"
+            <a href="./../profile_page/profile_page.html#address-book"
              class="nav-address-book" title="Address Book"></a>
 
-            <a href="./../settings_page/settings_page.html#account-details"
-             class="nav-settings" title="Settings"></a>
+            <a href="./../profile_page/profile_page.html#account-details"
+             class="nav-profile" title="Profile"></a>
 
             <span>${sessionStorage.getItem('firstName') || localStorage.getItem('firstName')}</span>
             <button id="sign-out" class="sign">Sign out</button>

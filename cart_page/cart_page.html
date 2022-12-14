@@ -4,10 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Burger Hut</title>
+    <title>Burger Hut | Cart</title>
 
     <link rel="stylesheet" href="./../global.css" type="text/css" />
-    <link rel="stylesheet" href="./../components/account_form/form.css" type="text/css">
+    <link
+      rel="stylesheet"
+      href="./../components/account_form/form.css"
+      type="text/css"
+    />
     <link rel="stylesheet" href="./style.css" type="text/css" />
 
     <script src="./../components/navbar.js" defer></script>
@@ -20,10 +24,17 @@
       <navbar-component></navbar-component>
 
       <main class="sm cart">
-       <h2>Your Cart</h2>
-       <div id="cart-items" class="cart-items">
-         
-       </div>
+        <section>
+          <h2>Your Cart</h2>
+          <div id="cart-items" class="cart-items"></div>
+        </section>
+
+        <section>
+          <h2>Your Address</h2>
+          <div id="address-list" class="address-list">
+  
+          </div>
+        </section>
       </main>
 
       <footer-component></footer-component>
