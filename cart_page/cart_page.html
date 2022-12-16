@@ -16,6 +16,7 @@
 
     <script src="./../components/navbar.js" defer></script>
     <script src="./../components/footer.js" defer></script>
+    <script src="./../components/account_form/country_code.js" defer></script>
     <script src="./script.js" defer></script>
   </head>
 
@@ -24,17 +25,81 @@
       <navbar-component></navbar-component>
 
       <main class="sm cart">
-        <section>
-          <h2>Your Cart</h2>
-          <div id="cart-items" class="cart-items"></div>
-        </section>
+        <form class="account-form" onsubmit="order(event)">
+          <section>
+            <h2>Your Cart</h2>
+            <div id="cart-items" class="cart-items"></div>
+          </section>
 
-        <section>
-          <h2>Your Address</h2>
-          <div id="address-list" class="address-list">
-  
-          </div>
-        </section>
+          <hr />
+
+          <section>
+            <h2>Your Address</h2>
+            <div id="address-list" class="address-list"></div>
+          </section>
+
+          <hr />
+
+          <section>
+            <h2>Extra Information</h2>
+
+            <div class="extra-info">
+              <div>
+                <h3>Phone number</h3>
+                <div class="phone-field">
+                  <select
+                    class="style1"
+                    name="countryCode"
+                    id="country-code"
+                  ></select>
+                  <input class="style1" type="tel" name="phone" id="phone" />
+                </div>
+              </div>
+
+              <div class="branch">
+                <p>Which branch are you ordering from ?</p>
+                <select name="branch" id="branch" required>
+                  <option selected disabled>Select a branch</option>
+                  <option value="1">Dekwaneh</option>
+                  <option value="2">Sin El Fil</option>
+                  <option value="3">Antelias</option>
+                  <option value="4">Achrafieh</option>
+                </select>
+              </div>
+            </div>
+          </section>
+
+          <hr />
+
+          <section>
+            <h2>Price</h2>
+            <div class="money">
+              <div class="separate-costs">
+                <div>
+                  <span class="label">Items Cost</span>
+                  <span id="totalCost" class="price"></span>
+                </div>
+                <div>
+                  <span class="label">After Tax</span>
+                  <span id="afterTax" class="price"></span>
+                </div>
+                <div>
+                  <span class="label">Delivery Charge</span>
+                  <span id="deliveryCharge" class="price">$3</span>
+                </div>
+              </div>
+              <hr />
+              <div class="total">
+                <span class="label">Total Price </span>
+                <span id="totalSum" class="price"></span>
+              </div>
+            </div>
+          </section>
+
+          <hr>
+
+          <input class="type1" type="submit" value="Checkout">
+        </form>
       </main>
 
       <footer-component></footer-component>

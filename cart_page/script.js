@@ -1,7 +1,5 @@
 const url = "http://localhost:5000";
 const id = sessionStorage.getItem('userId') || localStorage.getItem('userId');
-// sessionStorage.setItem('cart', '[]');
-// localStorage.setItem('cart', '[]');
 
 getCartItems();
 getAddresses();
@@ -17,7 +15,18 @@ function fillCartItems(items) {
     const list = document.getElementById('cart-items');
     list.innerHTML = '';
 
-    const totalPrice = items.reduce((acc, current) => acc + current.price * current.amount, 0);
+    const total = document.getElementById('totalCost');
+    const afterTax = document.getElementById('afterTax');
+    const deliveryCharge = parseInt(document.getElementById('deliveryCharge').innerText.replace('$', ''));
+    const totalSum = document.getElementById('totalSum')
+
+    totalPrice = items.reduce((acc, current) => acc + current.price * current.amount, 0);
+    total.innerText = `$${totalPrice}`;
+    const totalAfterTax = totalPrice + (totalPrice * 0.1);
+    afterTax.innerText = `$${totalAfterTax}`;
+    totalSum.innerText = `$${totalAfterTax + deliveryCharge}`;
+
+
     const amount = items.reduce((acc, current) => acc + current.amount, 0);
 
     const header = document.createElement('div');
@@ -126,13 +135,13 @@ function getAddresses() {
 }
 
 function createAddressBox(address) {
-    const { name, district, city, street_name } = address;
+    const { name, district, city, street_name, id } = address;
     const box = document.createElement('div');
     box.classList.add('address');
     box.innerHTML = `
         <h3>${name}</h3>
         <p> ${district} District, ${city}, ${street_name} </p>
-        <input type="radio" name="address" value="${name}">
+        <input type="radio" name="address" value="${id}">
     `;
     return box;
 }
@@ -143,4 +152,82 @@ function fillAddressList(addresses) {
     addresses.forEach(e => {
         list.appendChild(createAddressBox(e));
     })
+}
+
+//create order containing all user's info
+function order(e) {
+    e.preventDefault();
+
+    const address = parseInt(document.querySelector('input[name="address"]:checked').value);
+    const branch = parseInt(document.getElementById('branch').value);
+    const code = document.getElementById('country-code').value;
+    const phone = document.getElementById('phone').value;
+    const phoneNumber = `${code}-${phone}`;
+    const date = new Date();
+    const od = {
+        day: date.getDay(),
+        month: date.getMonth() + 1,
+        year: date.getFullYear(),
+        hour: date.getHours(),
+        minute: date.getMinutes(),
+        second: date.getSeconds()
+    }
+    const totalPrice = parseFloat(document.getElementById('totalSum').innerText.replace('$', ''));
+    const id = `${userId}${od.year}${od.month}${od.day}${od.hour}${od.minute}`;
+
+    fetch(`${url}/orders/add`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            id: id,
+            userId: sessionStorage.getItem('userId'),
+            branchId: branch,
+            addressId: address,
+            phoneNumber: phoneNumber,
+            totalPrice: totalPrice,
+            estimatedTime: 10,
+            orderedDate: `${od.year}-${od.month}-${od.day} ${od.hour}:${od.minute}:${od.second}`
+        })
+    })
+        .then((res) => res.json())
+        .then((res) => {
+            if (res.status === 'SUCCESS') {
+                if (addItemsToOrder(id)) {
+                    return true;
+                }
+            } else {
+                console.log(res);
+                return false;
+            }
+        })
+        .catch((err) => console.error(err));
+
+    return false;
+}
+
+//add food items to the order that was just sent
+function addItemsToOrder(orderId) {
+    const cart = JSON.parse(sessionStorage.getItem('cart')).map(e => {
+        return { id: e.id, amount: e.amount };
+    });
+
+    fetch(`${url}/orders/add-food`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            orderId: orderId,
+            cart: cart,
+        })
+    })
+        .then((res) => res.json())
+        .then((res) => {
+            return true;
+        })
+        .catch((err) => console.error(err));
 }

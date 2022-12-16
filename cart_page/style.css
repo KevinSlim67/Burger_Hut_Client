@@ -14,11 +14,19 @@ h2 {
   gap: 4em;
 }
 
+.cart hr {
+  color: rgba(0, 0, 0, 0.1);
+}
+
 .cart .cart-items {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.3em;
+}
+
+.cart .cart-items .item h3{
+  background-color: transparent;
 }
 
 .cart .cart-items > div {
@@ -33,7 +41,7 @@ h2 {
   font-size: 1.2em;
 }
 
-.cart .cart-items .price {
+.cart .price {
   font-weight: 700;
   color: var(--primary-500);
 }
@@ -135,22 +143,109 @@ h2 {
   background-color: white;
   height: 8em;
   border-radius: 5px;
-  padding: 1em;
+  padding: 1em 2.5em 1em 1em;
+  border: solid 1px var(--gray-50);
 }
 
 .cart .address h3 {
+  font-size: 1em;
+  background-color: transparent;
   color: var(--gray-900);
   margin-bottom: 0.6em;
 }
 
 .cart .address p {
   color: var(--gray-600);
+  font-size: clamp(0.9rem, 1vw, 1rem);
 }
 
 .cart .address input[type="radio"] {
   position: absolute;
   bottom: 1em;
   right: 1em;
-  width: 1.6em;
-  height: 1.6em;
+  width: clamp(1.2em, 2vw, 1.6em);
+  height: clamp(1.2em, 2vw, 1.6em);
+}
+
+.cart .extra-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.cart input,
+.cart select {
+  height: 2em;
+}
+
+.cart .branch {
+  display: flex;
+  align-items: center;
+  gap: 1.4em;
+}
+
+.cart .branch p {
+  color: var(--gray-700);
+  font-weight: 500;
+}
+
+@media (min-width: 600px) {
+  .cart .branch p {
+    white-space: nowrap;
+  }
+}
+
+.cart .money {
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.cart .money .separate-costs {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.cart .money .separate-costs > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2em;
+}
+
+.cart .money .label {
+  font-size: 0.7em;
+  color: var(--gray-700);
+  font-weight: 600;
+}
+
+.cart .money .total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+}
+
+.cart .money .total .label {
+  font-size: 1em;
+  font-weight: 700;
+}
+
+.cart input[type="submit"] {
+  align-self: flex-end;
+  width: 100%;
+}
+
+
+@media (min-width: 600px) {
+  .cart input[type="submit"] {
+    width: fit-content;
+  }
+  
 }
