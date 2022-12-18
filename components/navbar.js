@@ -15,14 +15,16 @@ function rememberCart() {
 let navbar = `
     <nav>
         <div class="content">
-            <div class="brand">
-                <img class="logo" src="./../assets/logo.png" alt="" />
-                <h1>Burger Hut</h1>
-            </div>
-            <div class="links">
-                <a href="./../home_page/home_page.html">Home</a>
-                <a href="./../order_page/order_page.html">Order</a>
-                <a href="./../contact_page/contact_page.html">Contact Us</a>
+            <div>
+                <div class="brand">
+                    <img class="logo" src="./../assets/logo.png" alt="" />
+                    <h1>Burger Hut</h1>
+                </div>
+                <div class="links">
+                    <a href="./../home_page/home_page.html">Home</a>
+                    <a href="./../order_page/order_page.html">Order</a>
+                    <a href="./../contact_page/contact_page.html">Contact Us</a>
+                </div>
             </div>
 
             <div class="extra-links" style="display: flex;">
@@ -35,15 +37,17 @@ let navbar = `
 
 let signedIn = `
     <nav>
-            <div class="content">
-            <div class="brand">
-                <img class="logo" src="./../assets/logo.png" alt="" />
-                <h1>Burger Hut</h1>
-            </div>
-            <div class="links">
-                <a href="./../home_page/home_page.html">Home</a>
-                <a href="./../order_page/order_page.html">Order</a>
-                <a href="./../contact_page/contact_page.html">Contact Us</a>
+        <div class="content">
+            <div>
+                <div class="brand">
+                    <img class="logo" src="./../assets/logo.png" alt="" />
+                    <h1>Burger Hut</h1>
+                </div>
+                <div class="links">
+                    <a href="./../home_page/home_page.html">Home</a>
+                    <a href="./../order_page/order_page.html">Order</a>
+                    <a href="./../contact_page/contact_page.html">Contact Us</a>
+                </div>
             </div>
 
             <div class="extra-links">

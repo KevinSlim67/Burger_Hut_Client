@@ -187,10 +187,6 @@ function createAddressBox(address) {
 
 //Get all of the user's addresses
 function getAddresses() {
-    //empties current food list
-    const addressBook = document.getElementById('address-list');
-    addressBook.innerHTML = '';
-
     //fetches new data
     fetch(`${url}/get-addresses`, {
         method: "POST",
@@ -209,7 +205,10 @@ function getAddresses() {
 
 //fill address book with addresses from user
 function fillAddressBook(arr) {
+    //empties current food list
     const list = document.getElementById('address-list');
+    list.innerHTML = '';
+
     arr.forEach(e => {
         list.appendChild(createAddressBox(e));
     });

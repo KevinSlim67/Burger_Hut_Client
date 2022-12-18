@@ -1,5 +1,6 @@
 const url = "http://localhost:5000";
 const id = sessionStorage.getItem('userId') || localStorage.getItem('userId');
+let avgCookTime = 0;
 
 getCartItems();
 getAddresses();
@@ -26,8 +27,9 @@ function fillCartItems(items) {
     afterTax.innerText = `$${totalAfterTax}`;
     totalSum.innerText = `$${totalAfterTax + deliveryCharge}`;
 
-
+    const totalTime = items.reduce((acc, current) => acc + current.cooktime, 0);
     const amount = items.reduce((acc, current) => acc + current.amount, 0);
+    avgCookTime = (totalTime / amount) + 15;
 
     const header = document.createElement('div');
     header.classList.add('header');
@@ -44,16 +46,22 @@ function fillCartItems(items) {
 
 //create cart item
 function createItem(item) {
-    const { id, name, image, price, amount } = item;
+    const { id, name, image, price, amount, cooktime } = item;
     const container = document.createElement('div');
     container.classList.add('item');
     container.setAttribute('id', id);
+
+    let cookSpan = '';
+    if (cooktime !== null) cookSpan = `<span class="cooktime">${cooktime}m <img src="./../assets/icons/clock.png" alt=""></span>`;
+
+
     container.innerHTML = `
         <div class="img-container"><img src="data:image/png;base64, ${image}"></div>
         <div class="info">
             <h3>${name} (x${amount})</h3>
             <div id="${id}-ingredients"</div>
             <span class="price">$${price * amount}</span>
+            ${cookSpan}
             <div class="delete">
                 <button onclick="removeOne(${id})" class="remove-one" title="Remove One"></button>
                 <button onclick="removeAll(${id})" class="remove-all" title="Remove All"></button>
@@ -188,7 +196,7 @@ function order(e) {
             addressId: address,
             phoneNumber: phoneNumber,
             totalPrice: totalPrice,
-            estimatedTime: 10,
+            estimatedTime: avgCookTime,
             orderedDate: `${od.year}-${od.month}-${od.day} ${od.hour}:${od.minute}:${od.second}`
         })
     })

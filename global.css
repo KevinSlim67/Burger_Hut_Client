@@ -192,9 +192,21 @@ nav .content {
   padding: 0 1rem;
 }
 
+nav .content > div:first-of-type {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+}
+
 @media (min-width: 600px) {
   nav .content {
     padding: 0 2rem;
+  }
+
+  nav .content > div:first-of-type {
+    display: flex;
+    align-items: center;
+    gap: 7em;
   }
 }
 

@@ -11,6 +11,7 @@
 
     <script src="./../components/navbar.js" defer></script>
     <script src="./../components/footer.js" defer></script>
+    <script src="./order_script.js"></script>
   </head>
 
   <body>
@@ -20,90 +21,7 @@
       <main class="order-history sm">
         <button class="type1 full">Order Now</button>
         <p class="title">Here are your latest orders</p>
-        <div class="order-list">
-
-          <div class="order">
-            <div>
-              <h2>Ordered on : DD/MM/YYYY</h2>
-              <span class="status">Delivered</span>
-            </div>
-            <div>
-              <div class="address">
-                <span>Address :</span>
-                <div class="text">
-                  <span class="name">Home</span>
-                  <p>
-                    Area TTTTT TTTTT, City TTTTT TTTTT, Building Name TTTTT
-                    TTTTT, Floor Number T
-                  </p>
-                </div>
-              </div>
-              <hr />
-              <p>1 Hamburger - 2 Fries - 1 Coca Cola</p>
-            </div>
-            <div>
-              <button class="details">Details</button>
-              <button class="re-order">
-                <img src="./../assets/icons/refresh.png" />Re-Order
-              </button>
-            </div>
-          </div>
-
-          <div class="order">
-            <div>
-              <h2>Ordered on : DD/MM/YYYY</h2>
-              <span class="status">Delivered</span>
-            </div>
-            <div>
-              <div class="address">
-                <span>Address :</span>
-                <div class="text">
-                  <span class="name">Home</span>
-                  <p>
-                    Area TTTTT TTTTT, City TTTTT TTTTT, Building Name TTTTT
-                    TTTTT, Floor Number T
-                  </p>
-                </div>
-              </div>
-              <hr />
-              <p>1 Hamburger - 2 Fries - 1 Coca Cola</p>
-            </div>
-            <div>
-              <button class="details">Details</button>
-              <button class="re-order">
-                <img src="./../assets/icons/refresh.png" />Re-Order
-              </button>
-            </div>
-          </div>
-
-          <div class="order">
-            <div>
-              <h2>Ordered on : DD/MM/YYYY</h2>
-              <span class="status">Delivered</span>
-            </div>
-            <div>
-              <div class="address">
-                <span>Address :</span>
-                <div class="text">
-                  <span class="name">Home</span>
-                  <p>
-                    Area TTTTT TTTTT, City TTTTT TTTTT, Building Name TTTTT
-                    TTTTT, Floor Number T
-                  </p>
-                </div>
-              </div>
-              <hr />
-              <p>1 Hamburger - 2 Fries - 1 Coca Cola</p>
-            </div>
-            <div>
-              <button class="details">Details</button>
-              <button class="re-order">
-                <img src="./../assets/icons/refresh.png" />Re-Order
-              </button>
-            </div>
-          </div>
-
-        </div>
+        <div id="order-list" class="order-list"></div>
       </main>
 
       <footer-component></footer-component>
