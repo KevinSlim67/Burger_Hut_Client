@@ -1,5 +1,6 @@
-let userId = sessionStorage.getItem('userId') || localStorage.getItem('userId');
-if (sessionStorage.getItem('userId') === null) {
+let userId = JSON.parse(sessionStorage.getItem('userId'));
+if (userId === null) {
+    userId = localStorage.getItem('userId');
     sessionStorage.setItem('userId', localStorage.getItem('userId'));
     sessionStorage.setItem('firstName', localStorage.getItem('firstName'));
     rememberCart();
@@ -64,7 +65,10 @@ let signedIn = `
             <a href="./../profile_page/profile_page.html#account-details"
              class="nav-profile" title="Profile"></a>
 
-            <span>${sessionStorage.getItem('firstName') || localStorage.getItem('firstName')}</span>
+            <a href="./../cart_page/cart_page.html"
+             class="nav-cart" title="Cart"></a>
+
+            <span>${sessionStorage.getItem('firstName') || sessionStorage.getItem('firstName')}</span>
             <button id="sign-out" class="sign">Sign out</button>
         </div>
         

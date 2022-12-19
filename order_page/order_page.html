@@ -17,8 +17,9 @@
 
   <body>
     <div id="layout" class="layout">
-      <a href="./../cart_page/cart_page.html" class="cart-btn primary-gradiant round">
+      <a id="cart-btn" href="./../cart_page/cart_page.html" class="cart-btn primary-gradiant round">
         <img src="./../assets/icons/cart.png" alt="" />
+        <span id="cart-btn-amount"></span>
       </a>
 
       <navbar-component></navbar-component>
@@ -43,20 +44,11 @@
       </section>
 
       <section class="selectors">
-        <div class="field-container" data-search>
+        <div class="search-bar" data-search>
           <img src="./../assets/icons/search.png" alt="" />
-          <input type="text" placeholder="Find your food" />
+          <input id="search-bar" type="text" placeholder="Find your food" />
         </div>
-        <div class="field-container" data-select>
-          <img src="./../assets/icons/expand_down.png" alt="" />
-          <select>
-            <option selected disabled>Select Branch</option>
-            <option value="Dekwaneh">Dekwaneh</option>
-            <option value="Achrafieh">Achrafieh</option>
-            <option value="Antelias">Antelias</option>
-            <option value="Sin El Fil">Sin El Fil</option>
-          </select>
-        </div>
+        <button onclick="search()" class="search type1">Search</button>
       </section>
 
       <section id="category-list" class="category-list">

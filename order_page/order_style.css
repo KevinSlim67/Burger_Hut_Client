@@ -10,12 +10,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+.cart-btn:visited {
+  color: white;
 }
 
 .cart-btn img {
-  width: 2.1rem;
-  height: 2.1rem;
-  margin: 0.8rem;
+  width: 2rem;
+  height: 2rem;
+  margin: 1rem;
+}
+
+.cart-btn span {
+  position: absolute;
+  left: 66%;
+  bottom: 0.8em;
+  font-size: 0.7em;
 }
 
 /* welcome ----------------------------------- */
@@ -140,10 +153,10 @@
   height: 3rem;
   display: flex;
   gap: 0.5rem;
+  width: 100%;
 }
 
-.selectors input[type="text"],
-.selectors select {
+.selectors input[type="text"] {
   height: 100%;
   width: 100%;
   background-color: white;
@@ -153,22 +166,21 @@
   padding: 0 1rem 0 2.5rem;
 }
 
-.selectors select {
-  /* removes default down arrow from select */
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  text-indent: 1px;
-  text-overflow: "";
-}
+.selectors .search {
+  height: 100%;
+  font-size: 1rem;
+  width: fit-content;
+  padding: 0 4rem;
+} 
 
-.selectors .field-container {
+.selectors .search-bar {
   position: relative;
   height: 100%;
   width: 50%;
+  flex: 2 2 0;
 }
 
-.selectors .field-container img {
+.selectors .search-bar img {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -178,11 +190,11 @@
 }
 
 @media (min-width: 600px) {
-  .selectors .field-container[data-search] {
+  .selectors .search-bar[data-search] {
     width: 65%;
   }
 
-  .selectors .field-container[data-select] {
+  .selectors .search-bar[data-select] {
     width: 35%;
   }
 }

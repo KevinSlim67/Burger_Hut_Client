@@ -13,6 +13,7 @@ for (let i = 0; i < buttons.length; i++) {
 }
 
 getCategoryItems('Beef');
+updateCartBtnAmount();
 
 //remove all items from current list, then get list of food items with specific category from server
 function getCategoryItems(cat) {
@@ -20,9 +21,7 @@ function getCategoryItems(cat) {
 
     //empties current food list
     const foodList = document.getElementById('food-list');
-    foodList.innerHTML = '';
 
-    //fetches new data
     fetch(`${url}/${cat}`, {
         method: "GET",
         headers: {
@@ -81,6 +80,7 @@ function createItem(item) {
 //fill food list with item cards with the present data
 function fillItemsList(arr) {
     const list = document.getElementById('food-list');
+    list.innerHTML = '';
     arr.forEach(e => {
         list.appendChild(createItem(e));
     });
@@ -205,8 +205,36 @@ function addToCart(foodId) {
                 }
             })
             if (!exists) cart.push({ ...res, amount: amount });
-            
             sessionStorage.setItem('cart', JSON.stringify(cart));
+            updateCartBtnAmount();
+        })
+        .catch((err) => console.error(err));
+}
+
+function updateCartBtnAmount() {
+    const cart = JSON.parse(sessionStorage.getItem('cart'));
+    const total = cart.reduce((total, item) => total + item.amount, 0);
+    const btn = document.getElementById('cart-btn-amount');
+    btn.innerText = total;
+}
+
+function search() {
+    const input = document.getElementById('search-bar').value;
+    if (input === '') return;
+
+    fetch(`${url}/search/${input}`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        }
+    })
+        .then((res) => res.json())
+        .then((res) => {
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove('selected'); //remove select effect from old selected button
+            }
+            fillItemsList(res);
         })
         .catch((err) => console.error(err));
 }

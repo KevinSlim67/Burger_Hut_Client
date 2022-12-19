@@ -333,6 +333,10 @@ nav .extra-links .nav-profile {
   background-image: url(./assets/icons/nav_profile.png);
 }
 
+nav .extra-links .nav-cart {
+  background-image: url(./assets/icons/cart.png);
+}
+
 nav .sign {
   display: block;
   font-size: 1em;
