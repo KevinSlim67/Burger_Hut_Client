@@ -161,7 +161,7 @@ function extractData() {
 }
 
 function createAddressBox(address) {
-    const { name, district, city, street_name, building_name, floor_number, room_number, company_name, landmark } = address;
+    const { id, name, district, city, street_name, building_name, floor_number, room_number, company_name, landmark } = address;
     const streetField = street_name !== null ? `, ${street_name}`: '';
     const buildingField = building_name !== null ? `${building_name} Building`: '';
     const floorNumField = floor_number !== null ? `Floor ${floor_number}`: '';
@@ -172,6 +172,8 @@ function createAddressBox(address) {
 
     const addressBox = document.createElement('div');
     addressBox.classList.add('address');
+    addressBox.setAttribute('id', id);
+
     addressBox.innerHTML = `
         <h3>${name}</h3>
         <p> ${district} District, ${city} ${streetField} </p>
@@ -179,7 +181,7 @@ function createAddressBox(address) {
         <p>${[companyNameField, landmarkField].filter(e => e !== '').join(' - ')} </p>
         
 
-        <button class="delete" onclick="deleteAddress(${name})"></button>
+        <button class="delete" onclick="deleteAddress(${id})"></button>
         <button class="edit"></button>
     `;
     return addressBox;
@@ -213,15 +215,15 @@ function fillAddressBook(arr) {
     });
 }
 
-function deleteAddress(name) {
+function deleteAddress(id) {
  //fetches new data
- fetch(`${url}/delete-address`, {
+ fetch(`${url}/address/delete`, {
     method: "DELETE",
     headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
     },
-    body: JSON.stringify({userId: sessionStorage.getItem('userId'), name: name })
+    body: JSON.stringify({id: id})
 })
     .then((res) => res.json())
     .then((res) => {
