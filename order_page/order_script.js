@@ -12,6 +12,8 @@ for (let i = 0; i < buttons.length; i++) {
     buttons[i].onclick = () => getCategoryItems(category);
 }
 
+getCategoryItems('Beef');
+
 //remove all items from current list, then get list of food items with specific category from server
 function getCategoryItems(cat) {
     highlightSelectedItem(cat);
@@ -21,13 +23,12 @@ function getCategoryItems(cat) {
     foodList.innerHTML = '';
 
     //fetches new data
-    fetch(`${url}/category`, {
-        method: "POST",
+    fetch(`${url}/${cat}`, {
+        method: "GET",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ category: cat })
+        }
     })
         .then((res) => res.json())
         .then((res) => {
@@ -139,13 +140,12 @@ function createItemDetails(item) {
 
 const getIngredients = async (id) => {
     try {
-        const response = await fetch(`${url}/ingredients`, {
-            method: "POST",
+        const response = await fetch(`${url}/${id}/ingredients`, {
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ id: id })
+            }
         });
         const data = await response.json();
         return data;
@@ -181,21 +181,20 @@ function hideItemDetails() {
 }
 
 function addToCart(foodId) {
-    const userId = sessionStorage.getItem('userId');
     const amount = parseInt(document.getElementById('amount').textContent);
     if (amount === 0) return; //TODO : Display message that user has to specify an amount
 
     //adds food item to cart
-    fetch(`${url}/id`, {
-        method: "POST",
+    fetch(`${url}/id/${foodId}`, {
+        method: "GET",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ id: foodId })
     })
         .then((res) => res.json())
         .then((res) => {
+            console.log(res);
             //if item already present in cart, just increment amount instead of adding the item again
             const cart = JSON.parse(sessionStorage.getItem('cart'));
             let exists = false;

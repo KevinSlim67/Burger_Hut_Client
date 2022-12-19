@@ -1,7 +1,9 @@
 const currentDate = new Date();
 const currentTime = currentDate.getHours();
 const welcome = document.getElementsByClassName('welcome')[0];
-const username = sessionStorage.getItem('firstName');
+let username = sessionStorage.getItem('firstName');
+if (username === null) username = localStorage.getItem('firstName');
+
 
 let image, greeting;
 

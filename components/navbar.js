@@ -1,6 +1,7 @@
 let userId = sessionStorage.getItem('userId') || localStorage.getItem('userId');
 if (sessionStorage.getItem('userId') === null) {
     sessionStorage.setItem('userId', localStorage.getItem('userId'));
+    sessionStorage.setItem('firstName', localStorage.getItem('firstName'));
     rememberCart();
 }
 

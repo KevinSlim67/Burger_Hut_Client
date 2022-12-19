@@ -74,13 +74,12 @@ function createItem(item) {
 
 //get ingredients of food, and fill a list of them
 function fillIngredients(foodId) {
-    fetch(`${url}/foods/ingredients`, {
-        method: "POST",
+    fetch(`${url}/foods/${foodId}/ingredients`, {
+        method: "GET",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ id: foodId })
     })
         .then((res) => res.json())
         .then((res) => {
@@ -127,13 +126,12 @@ function removeAll(foodId) {
 }
 
 function getAddresses() {
-    fetch(`${url}/users/get-addresses`, {
-        method: "POST",
+    fetch(`${url}/users/addresses/${id}`, {
+        method: "GET",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ userId: sessionStorage.getItem('userId') })
     })
         .then((res) => res.json())
         .then((res) => {

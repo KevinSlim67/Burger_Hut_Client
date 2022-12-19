@@ -187,14 +187,13 @@ function createAddressBox(address) {
 
 //Get all of the user's addresses
 function getAddresses() {
-    //fetches new data
-    fetch(`${url}/get-addresses`, {
-        method: "POST",
+    let userId = sessionStorage.getItem('userId');
+    fetch(`${url}/addresses/${userId}`, {
+        method: "GET",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({userId: sessionStorage.getItem('userId') })
     })
         .then((res) => res.json())
         .then((res) => {
