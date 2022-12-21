@@ -282,12 +282,47 @@
 }
 
 .food-card .content {
+  position: relative;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column-reverse;
   z-index: 1;
   gap: 0.1rem;
+}
+
+.food-card h3, .food-card h4 {
+  opacity: 100%;
+  transform: scaleY(1);
+  transition: transform 200ms ease, opacity 200ms;
+}
+
+
+.food-card:hover h3, .food-card:hover h4 {
+  opacity: 0%;
+  transform: scaleY(0);
+  transition: transform 200ms ease, opacity 200ms;
+}
+
+.food-card button.view {
+  transform: scale(0);
+  transition: transform 200ms ease;
+  position: absolute;
+  bottom: 1em;
+  left: 50%;
+  translate: -50% 0;
+  background-color: var(--primary-500);
+  border-radius: 20px;
+  border: none;
+  font-size: 0.8em;
+  padding: 0.5em 1.5em;
+  font-weight: 700;
+  color: white;
+}
+
+.food-card:hover button.view {
+  transform: scale(1.1);
+  transition: transform 200ms ease;
 }
 
 .food-card .add {
@@ -307,14 +342,14 @@
   width: 2em;
   height: 2em;
 
-  background-image: url(./../assets/icons/add.png);
+  background-image: url(./../assets/icons/nav_favorite.png);
   background-position: center;
-  background-size: 50%;
+  background-size: 70%;
   background-repeat: no-repeat;
 }
 
 .food-card .add:hover {
-  background-color: rgba(0, 128, 0, 0.199);
+  background-color: var(--primary-400-50);
   transform: translateY(0);
 }
 

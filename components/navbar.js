@@ -23,15 +23,15 @@ let navbar = `
                     <h1>Burger Hut</h1>
                 </div>
                 <div class="links">
-                    <a href="./../home_page/home_page.html">Home</a>
-                    <a href="./../order_page/order_page.html">Order</a>
-                    <a href="./../contact_page/contact_page.html">Contact Us</a>
+                    <a href="./../home_page/home.html">Home</a>
+                    <a href="./../order_page/order.html">Order</a>
+                    <a href="./../contact_page/contact.html">Contact Us</a>
                 </div>
             </div>
 
             <div class="extra-links" style="display: flex;">
-                <a href="./../sign_in_page/sign_in_page.html" class="sign in">Sign in</a>
-                <a href="./../sign_in_page/sign_up_page.html" class="sign up">Sign up</a>
+                <a href="./../sign_in_page/sign_in.html" class="sign in">Sign in</a>
+                <a href="./../sign_in_page/sign_up.html" class="sign up">Sign up</a>
             </div> 
         </div>
     </nav>
@@ -46,9 +46,9 @@ let signedIn = `
                     <h1>Burger Hut</h1>
                 </div>
                 <div class="links">
-                    <a href="./../home_page/home_page.html">Home</a>
-                    <a href="./../order_page/order_page.html">Order</a>
-                    <a href="./../contact_page/contact_page.html">Contact Us</a>
+                    <a href="./../home_page/home.html">Home</a>
+                    <a href="./../order_page/order.html">Order</a>
+                    <a href="./../contact_page/contact.html">Contact Us</a>
                 </div>
             </div>
 
@@ -56,16 +56,16 @@ let signedIn = `
             <a href="./../favorite_page/favorite.html"
              class="nav-favorite" title="Favorites"></a>
 
-            <a href="./../order_history_page/order_history_page.html"
+            <a href="./../order_history_page/order_history.html"
              class="nav-order-history" title="Order History"></a>
 
-            <a href="./../profile_page/profile_page.html#address-book"
+            <a href="./../profile_page/profile.html#address-book"
              class="nav-address-book" title="Address Book"></a>
 
-            <a href="./../profile_page/profile_page.html#account-details"
+            <a href="./../profile_page/profile.html#account-details"
              class="nav-profile" title="Profile"></a>
 
-            <a href="./../cart_page/cart_page.html"
+            <a href="./../cart_page/cart.html"
              class="nav-cart" title="Cart"></a>
 
             <span>${sessionStorage.getItem('firstName') || sessionStorage.getItem('firstName')}</span>
@@ -98,7 +98,7 @@ class Navbar extends HTMLElement {
             signOut.onclick = () => {
                 localStorage.clear();
                 sessionStorage.clear();
-                window.location = './../sign_in_page/sign_in_page.html';
+                window.location = './../sign_in_page/sign_in.html';
             }
         }
     }

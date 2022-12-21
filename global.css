@@ -262,6 +262,7 @@ nav button.hamburger:hover {
 
 nav a {
   text-decoration: none;
+  color: var(--primary-800);
 }
 
 nav a:visited {

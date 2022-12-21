@@ -60,6 +60,7 @@ function createItem(item) {
         <div class="content">
             <h3>${name}</h3>
             <h4>$${price}</h4>
+            <button class="view">View</button>
         </div>
         <button class="add"></button>
         `;
