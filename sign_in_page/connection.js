@@ -7,7 +7,7 @@ const url = "http://localhost:5000/users";
 if (localStorage.getItem('userId') !== null) {
     sessionStorage.setItem('userId', localStorage.getItem('userId'));
     sessionStorage.setItem('firstName', localStorage.getItem('firstName'));
-    window.location.replace("./../home_page/home_page.html");
+    window.location.replace("./../home_page/home.html");
 }
 
 //attemps to log user in
@@ -120,7 +120,7 @@ function handleRegistrationStatus(data) {
         case 'SUCCESS':
             message.innerText = "Account created!";
             message.style.color = successColor;
-            //window.location.replace("./../home_page/home_page.html");
+            //window.location.replace("./../home_page/home.html");
             break;
         case "DUPLICATE":
             message.innerText = "Email already exists!";
@@ -142,7 +142,7 @@ function handleAuthenticationStatus(data, rememberMe) {
             sessionStorage.setItem('userId', id);
             sessionStorage.setItem('firstName', firstName);
             sessionStorage.setItem('cart', JSON.stringify([]));
-            window.location.replace("./../home_page/home_page.html");
+            window.location.replace("./../home_page/home.html");
             break;
         case "NOT FOUND":
             message.innerText = "Invalid Credentials!";
