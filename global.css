@@ -371,7 +371,6 @@ nav .extra-links span {
   nav a {
     font-size: 0.9em;
   }
-
 }
 
 @media (min-width: 1000px) {
@@ -505,5 +504,46 @@ footer .copyright {
     align-items: center;
   }
 }
+/* ------------------------------------------- */
 
+/* popup ------------------------------------- */
+.popup {
+  position: fixed;
+  bottom: 1em;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 50%;
+  padding: 1em;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.popup button {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8em;
+  font-weight: 500;
+  background-color: transparent;
+  border: none;
+}
+
+.popup p {
+  font-size: 0.9em;
+}
+
+.popup.error {
+  background-color: rgba(218, 111, 111, 0.801);
+  border-color: rgba(218, 58, 58, 0.8);
+  color: rgb(19, 0, 0);
+}
+
+.popup.success {
+  background-color: rgba(98, 201, 84, 0.801);
+  border-color: rgba(60, 179, 30, 0.8);
+  color: rgb(4, 19, 0);
+}
 /* ------------------------------------------- */

@@ -325,6 +325,10 @@
   transition: transform 200ms ease;
 }
 
+.food-card:hover button.view:hover {
+  background-color: var(--primary-400);
+}
+
 .food-card .add {
   position: absolute;
   display: flex;
@@ -334,7 +338,7 @@
   border-style: none;
   width: fit-content;
   height: fit-content;
-  background-color: rgba(0, 0, 0, 0.116);
+  background-color: transparent;
   top: 5%;
   right: 5%;
   z-index: 2;
@@ -349,7 +353,7 @@
 }
 
 .food-card .add:hover {
-  background-color: var(--primary-400-50);
+  filter: brightness(0.5) sepia(1) saturate(600%);
   transform: translateY(0);
 }
 

@@ -1,4 +1,7 @@
 const url = "http://localhost:5000/foods";
+const popup = document.getElementById('popup');
+let temporaryTotalAmount = 0;
+let timerId = null;
 
 //get all buttons that are supposed to switch the category of items displayed
 const buttons = (() => {
@@ -195,7 +198,6 @@ function addToCart(foodId) {
     })
         .then((res) => res.json())
         .then((res) => {
-            console.log(res);
             //if item already present in cart, just increment amount instead of adding the item again
             const cart = JSON.parse(sessionStorage.getItem('cart'));
             let exists = false;
@@ -204,10 +206,27 @@ function addToCart(foodId) {
                     i.amount = i.amount + amount;
                     exists = true;
                 }
-            })
+            });
             if (!exists) cart.push({ ...res, amount: amount });
             sessionStorage.setItem('cart', JSON.stringify(cart));
             updateCartBtnAmount();
+
+            if (!popup.classList.contains('success')) {
+                popup.classList.remove('error');
+                popup.classList.add('success');
+            }
+            popup.setAttribute('text', `${amount + temporaryTotalAmount} ${res.name}(s) added to cart`);
+            if (timerId === null) {
+                timerId = setTimeout(() => {
+                    temporaryTotalAmount = 0;
+                }, 5000);
+            } else {
+                clearTimeout(timerId);
+                timerId = setTimeout(() => {
+                    temporaryTotalAmount = 0;
+                }, 5000);
+            }
+            temporaryTotalAmount += amount;
         })
         .catch((err) => console.error(err));
 }
