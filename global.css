@@ -363,6 +363,43 @@ nav .extra-links span {
   font-weight: 500;
 }
 
+nav .dropdown-list {
+  display: none;
+  list-style: none;
+  position: absolute;
+  top: 3.2rem;
+  right: 0.5rem;
+  width: 50%;
+  background-color: var(--bg);
+  -webkit-box-shadow: 1px 1px 11px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px 11px 2px rgba(0, 0, 0, 0.3);
+  flex-direction: column;
+}
+
+nav .dropdown-list :where(a, button) {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0.8em;
+  font-size: 1.3em;
+  margin: 0 auto;
+  background-color: transparent;
+  border: none;
+  color: var(--primary-800);
+  text-align: left;
+}
+
+nav .dropdown-list :where(a, button):hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--primary-800);
+}
+
+nav .dropdown-list li:not(:last-child) {
+  border-style: none none solid none;
+  border-width: 1px;
+  border-color: rgb(216, 216, 216);
+}
+
 @media (min-width: 600px) {
   nav h1 {
     display: block;
@@ -375,6 +412,10 @@ nav .extra-links span {
 
 @media (min-width: 1000px) {
   nav .hamburger {
+    display: none;
+  }
+
+  nav .dropdown-list {
     display: none;
   }
 

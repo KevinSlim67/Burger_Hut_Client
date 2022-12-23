@@ -69,11 +69,18 @@ let signedIn = `
              class="nav-cart" title="Cart"></a>
 
             <span>${sessionStorage.getItem('firstName') || sessionStorage.getItem('firstName')}</span>
-            <button id="sign-out" class="sign">Sign out</button>
+            <button class="sign sign-out">Sign out</button>
         </div>
-        
-        <button class="hamburger" onClick=""></button>
-        </div>
+
+        <button id="hamburger" class="hamburger"></button>
+        <ul id="dropdown-list" class="dropdown-list">
+            <li><a href="./../favorite_page/favorite.html">Favorites</a></li>
+            <li><a href="./../order_history_page/order_history.html">Order History</a></li>
+            <li><a href="./../profile_page/profile.html#address-book">Address Book</a></li>
+            <li><a href="./../profile_page/profile.html#account-details">Profile</a></li>
+            <li><a href="./../cart_page/cart.html">Cart</a></li>
+            <li><button class="sign-out">Sign Out</button></li>
+        </ul>
     </nav>
 `
 
@@ -81,8 +88,10 @@ if (userId !== null) {
     navbar = signedIn;
 }
 
-
 class Navbar extends HTMLElement {
+
+    dropdownActivated = false;
+
     constructor() {
         super();
     }
@@ -93,12 +102,35 @@ class Navbar extends HTMLElement {
         ${navbar}
         `;
 
+        this.dropdownToggle();
+        this.signOutSetting();
+    }
+
+    //adds function to hamburger button that lets user toggle on and off the dropdown list
+    dropdownToggle() {
+        const toggleButton = document.querySelector('#hamburger');
+        const dropdown = document.querySelector('#dropdown-list')
+        toggleButton.addEventListener('click', () => {
+            if (!this.dropdownActivated) {
+                dropdown.style.display = 'flex';
+                this.dropdownActivated = true;
+            } else {
+                dropdown.style.display = 'none';
+                this.dropdownActivated = false;
+            }     
+        });
+    }
+
+    //adds function to signout button that logs user out and clears their storage
+    signOutSetting() {
         if (userId !== null) {
-            const signOut = document.getElementById('sign-out');
-            signOut.onclick = () => {
-                localStorage.clear();
-                sessionStorage.clear();
-                window.location = './../sign_in_page/sign_in.html';
+            const buttons = document.querySelectorAll('.sign-out');
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].onclick = () => {
+                    localStorage.clear();
+                    sessionStorage.clear();
+                    window.location = './../sign_in_page/sign_in.html';
+                }
             }
         }
     }
