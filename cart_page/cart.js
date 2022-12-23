@@ -179,6 +179,7 @@ function order(e) {
     }
     const totalPrice = parseFloat(document.getElementById('totalSum').innerText.replace('$', ''));
     const id = `${userId}${od.year}${od.month}${od.day}${od.hour}${od.minute}`;
+    const captcha = document.getElementById('g-recaptcha-response').value;
 
     fetch(`${url}/orders/add`, {
         method: "POST",
@@ -194,12 +195,18 @@ function order(e) {
             phoneNumber: phoneNumber,
             totalPrice: totalPrice,
             estimatedTime: avgCookTime,
-            orderedDate: `${od.year}-${od.month}-${od.day} ${od.hour}:${od.minute}:${od.second}`
+            orderedDate: `${od.year}-${od.month}-${od.day} ${od.hour}:${od.minute}:${od.second}`,
+            captcha: captcha
         })
     })
         .then((res) => res.json())
         .then((res) => {
-            addItemsToOrder(id);
+            if (res.status === 'FAILED') {
+                popup.setAttribute('status', 'error');
+                popup.setAttribute('text', `Uh oh, it seems the captcha verification wasn't completed.`);
+            } else {
+                addItemsToOrder(id);
+            }
         })
         .catch((err) => {
             console.error(err);
