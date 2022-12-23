@@ -109,6 +109,7 @@ class Navbar extends HTMLElement {
     //adds function to hamburger button that lets user toggle on and off the dropdown list
     dropdownToggle() {
         const toggleButton = document.querySelector('#hamburger');
+        if (toggleButton === null) return; //if togglebutton isn't found, meaning it's a big screen, stop the function
         const dropdown = document.querySelector('#dropdown-list')
         toggleButton.addEventListener('click', () => {
             if (!this.dropdownActivated) {

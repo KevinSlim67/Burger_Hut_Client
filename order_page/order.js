@@ -1,7 +1,15 @@
 const url = "http://localhost:5000/foods";
 const popup = document.getElementById('popup');
-let temporaryTotalAmount = 0;
-let timerId = null;
+let temporaryTotalAmount = 0; //stores total amount of items added, it resets to 0 when popup setTimeout() is done
+let timerId = null; //stores the current popup timer, useful to terminate it in case another one is triggered before this one is finished
+
+getCategoryItems('Beef'); //by default display beef category
+
+//hides cart button if user isn't logged in
+if (sessionStorage.getItem('userId') === 'null') {
+    const btn = document.querySelector('#cart-btn');
+    btn.style.display = 'none';
+} else updateCartBtnAmount();
 
 //get all buttons that are supposed to switch the category of items displayed
 const buttons = (() => {
@@ -15,15 +23,9 @@ for (let i = 0; i < buttons.length; i++) {
     buttons[i].onclick = () => getCategoryItems(category);
 }
 
-getCategoryItems('Beef');
-updateCartBtnAmount();
-
 //remove all items from current list, then get list of food items with specific category from server
 function getCategoryItems(cat) {
     highlightSelectedItem(cat);
-
-    //empties current food list
-    const foodList = document.getElementById('food-list');
 
     fetch(`${url}/${cat}`, {
         method: "GET",
@@ -39,10 +41,12 @@ function getCategoryItems(cat) {
         .catch((err) => {
             popup.setAttribute('status', 'error');
             popup.setAttribute('text', `Uh oh, we couldn't get the items. If the issue persists, try again later.`);
-            console.error(err)
+            console.error(err);
         });
 }
 
+
+//highlights category button selected and unhighlights the rest
 function highlightSelectedItem(cat) {
     const container = document.getElementById('category-list');
     const buttons = container.getElementsByTagName('button');
@@ -94,6 +98,7 @@ function fillItemsList(arr) {
     });
 }
 
+//displays a box that displays all details about item such as ingredients and cooktime 
 function createItemDetails(item) {
     const { id, name, price, image, rating, cooktime, ingredients } = item;
 
@@ -146,6 +151,7 @@ function createItemDetails(item) {
     return itemDetails;
 }
 
+//get a food item's ingredients
 const getIngredients = async (id) => {
     try {
         const response = await fetch(`${url}/${id}/ingredients`, {
@@ -163,8 +169,9 @@ const getIngredients = async (id) => {
 }
 
 
+
 function showItemDetails(item) {
-    hideItemDetails();
+    hideItemDetails(); //if another details pane is shown, delete it before displaying new one
     const body = document.body;
     const div = createItemDetails(item);
     body.appendChild(div);
@@ -182,6 +189,7 @@ function decrementCounter() {
     if (num - 1 >= 0) counter.textContent = --num;
 }
 
+//removes food item details pane
 function hideItemDetails() {
     const body = document.body;
     const itemDetails = document.getElementsByClassName('food-details')[0];
@@ -192,6 +200,14 @@ function hideItemDetails() {
 function addToCart(foodId) {
     const amount = parseInt(document.getElementById('amount').textContent);
 
+    //if user isn't logged in, display a warning popup and exit out of function
+    if (sessionStorage.getItem('userId') === 'null') {
+        popup.setAttribute('status', 'error');
+        popup.setAttribute('text', `You need to login in order to add an item to your cart !`);
+        return false;
+    };
+
+    //if the amount set is 0, display a warning popup and exit out of function
     if (amount === 0) {
         popup.setAttribute('status', 'error');
         popup.setAttribute('text', `You need to specify an amount !`);
