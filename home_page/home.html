@@ -9,10 +9,17 @@
     <link rel="stylesheet" href="./../global.css" type="text/css" />
     <link rel="stylesheet" href="./home.css" type="text/css" />
 
-    <script src="./../global.js" async></script>
+    <script src="./../global.js" defer></script>
     <script src="./../components/navbar.js" defer></script>
     <script src="./../components/footer.js" defer></script>
+    <script src="./../components/popup.js" defer></script>
     <script src="./slider.js" defer></script>
+    <script defer>
+      function notImplemented() {
+        popup.setAttribute('status', 'error');
+        popup.setAttribute('text', `Sorry, this feature was not implemented !`);
+      }
+    </script>
   </head>
 
   <body>
@@ -82,8 +89,8 @@
             Download the Burger Hut App and start redeeming delicious offers.
           </p>
           <div>
-            <button><img src="./../assets/home/app_store.png" /></button>
-            <button><img src="./../assets/home/play_store.png" /></button>
+            <button onclick="notImplemented()"><img src="./../assets/home/app_store.png" /></button>
+            <button onclick="notImplemented()"><img src="./../assets/home/play_store.png" /></button>
           </div>
         </div>
       </section>

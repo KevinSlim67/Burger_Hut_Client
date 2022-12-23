@@ -36,7 +36,11 @@ function getCategoryItems(cat) {
         .then((res) => {
             fillItemsList(res);
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+            popup.setAttribute('status', 'error');
+            popup.setAttribute('text', `Uh oh, we couldn't get the items. If the issue persists, try again later.`);
+            console.error(err)
+        });
 }
 
 function highlightSelectedItem(cat) {
@@ -184,9 +188,15 @@ function hideItemDetails() {
     if (itemDetails !== undefined) body.removeChild(itemDetails);
 }
 
+//add food item to cart, and specifies the amount added
 function addToCart(foodId) {
     const amount = parseInt(document.getElementById('amount').textContent);
-    if (amount === 0) return; //TODO : Display message that user has to specify an amount
+
+    if (amount === 0) {
+        popup.setAttribute('status', 'error');
+        popup.setAttribute('text', `You need to specify an amount !`);
+        return false;
+    };
 
     //adds food item to cart
     fetch(`${url}/id/${foodId}`, {
@@ -200,6 +210,8 @@ function addToCart(foodId) {
         .then((res) => {
             //if item already present in cart, just increment amount instead of adding the item again
             const cart = JSON.parse(sessionStorage.getItem('cart'));
+
+            //checks if item is already in cart, if it is, increment its amount instead of adding it again
             let exists = false;
             cart.forEach(i => {
                 if (i.id === foodId) {
@@ -208,29 +220,38 @@ function addToCart(foodId) {
                 }
             });
             if (!exists) cart.push({ ...res, amount: amount });
+            
             sessionStorage.setItem('cart', JSON.stringify(cart));
             updateCartBtnAmount();
-
-            if (!popup.classList.contains('success')) {
-                popup.classList.remove('error');
-                popup.classList.add('success');
-            }
-            popup.setAttribute('text', `${amount + temporaryTotalAmount} ${res.name}(s) added to cart`);
-            if (timerId === null) {
-                timerId = setTimeout(() => {
-                    temporaryTotalAmount = 0;
-                }, 5000);
-            } else {
-                clearTimeout(timerId);
-                timerId = setTimeout(() => {
-                    temporaryTotalAmount = 0;
-                }, 5000);
-            }
-            temporaryTotalAmount += amount;
+            handleSuccessPopup(amount, res);
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+            popup.setAttribute('status', 'error');
+            popup.setAttribute('text', `Uh oh, there appears to have been a problem. If the issue persists, try again later.`);
+            console.error(err)
+        });
 }
 
+//handles the success popup that appear if addToCart() is successful
+function handleSuccessPopup(amount, res) {
+    popup.setAttribute('status', 'success');
+    popup.setAttribute('text', `${amount + temporaryTotalAmount} ${res.name}(s) added to cart`);
+    //if the timer of the first timer isn't done, then cancel it, and start a new timer
+    //with the amount updated
+    if (timerId === null) {
+        timerId = setTimeout(() => {
+            temporaryTotalAmount = 0;
+        }, 5000);
+    } else {
+        clearTimeout(timerId);
+        timerId = setTimeout(() => {
+            temporaryTotalAmount = 0;
+        }, 5000);
+    }
+    temporaryTotalAmount += amount;
+}
+
+//updates the cart button amount that is on the bottom right of the screen
 function updateCartBtnAmount() {
     const cart = JSON.parse(sessionStorage.getItem('cart'));
     const total = cart.reduce((total, item) => total + item.amount, 0);
@@ -238,6 +259,7 @@ function updateCartBtnAmount() {
     btn.innerText = total;
 }
 
+//compares the string inputted in the search bar with all the food items in the DB, then returns the results
 function search() {
     const input = document.getElementById('search-bar').value;
     if (input === '') return;

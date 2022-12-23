@@ -120,7 +120,6 @@ function removeOne(foodId) {
 function removeAll(foodId) {
     const cart = JSON.parse(sessionStorage.getItem('cart'));
     const newCart = cart.filter(i => i.id !== foodId);
-    console.log(newCart);
     sessionStorage.setItem('cart', JSON.stringify(newCart));
     fillCartItems(newCart);
 }
@@ -171,7 +170,7 @@ function order(e) {
     const phoneNumber = `${code}-${phone}`;
     const date = new Date();
     const od = {
-        day: date.getDay(),
+        day: date.getDate(),
         month: date.getMonth() + 1,
         year: date.getFullYear(),
         hour: date.getHours(),
@@ -200,16 +199,13 @@ function order(e) {
     })
         .then((res) => res.json())
         .then((res) => {
-            if (res.status === 'SUCCESS') {
-                if (addItemsToOrder(id)) {
-                    return true;
-                }
-            } else {
-                console.log(res);
-                return false;
-            }
+            addItemsToOrder(id);
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+            console.error(err);
+            popup.setAttribute('status', 'error');
+            popup.setAttribute('text', `Uh oh, there appears to have been a problem. If the issue persists, try again later.`);
+        });
 
     return false;
 }
@@ -233,7 +229,13 @@ function addItemsToOrder(orderId) {
     })
         .then((res) => res.json())
         .then((res) => {
-            return true;
+            popup.setAttribute('status', 'success');
+            popup.setAttribute('text', `Order successfully sent ! Go to order history section to track your order.`);
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+            popup.setAttribute('status', 'error');
+            popup.setAttribute('text', `Uh oh, there appears to have been a problem. If the issue persists, try again later.`);
+            console.error(err);
+            return false;
+        });
 }

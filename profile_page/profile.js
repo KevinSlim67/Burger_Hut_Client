@@ -134,10 +134,17 @@ function addAddress(e) {
     })
         .then((res) => res.json())
         .then((data) => {
-            getAddresses();
-            //TO DO : Send confirmation message or error message depending on the result
+            if (data.status !== 'ERROR') {
+                popup.setAttribute('status', 'success');
+                popup.setAttribute('text', `Address successfully added`);
+                getAddresses();
+            }
         })
-        .catch((err) => console.error(err));
+        .catch((err) => {
+            popup.setAttribute('status', 'error');
+            popup.setAttribute('text', `Uh oh, there appears to have been a problem. If the issue persists, try again later.`);
+            console.error(err)
+        });
 
     return false;
 }
@@ -162,12 +169,12 @@ function extractData() {
 
 function createAddressBox(address) {
     const { id, name, district, city, street_name, building_name, floor_number, room_number, company_name, landmark } = address;
-    const streetField = street_name !== null ? `, ${street_name}`: '';
-    const buildingField = building_name !== null ? `${building_name} Building`: '';
-    const floorNumField = floor_number !== null ? `Floor ${floor_number}`: '';
-    const roomNumField = room_number!== null ? `Room ${room_number}`: '';
-    const companyNameField = company_name !== null ? `At ${company_name}`: '';
-    const landmarkField = landmark !== null ? `Near ${landmark}`: '';
+    const streetField = street_name !== null ? `, ${street_name}` : '';
+    const buildingField = building_name !== null ? `${building_name} Building` : '';
+    const floorNumField = floor_number !== null ? `Floor ${floor_number}` : '';
+    const roomNumField = room_number !== null ? `Room ${room_number}` : '';
+    const companyNameField = company_name !== null ? `At ${company_name}` : '';
+    const landmarkField = landmark !== null ? `Near ${landmark}` : '';
 
 
     const addressBox = document.createElement('div');
@@ -190,7 +197,7 @@ function createAddressBox(address) {
 //Get all of the user's addresses
 function getAddresses() {
     let userId = sessionStorage.getItem('userId');
-    fetch(`${url}/addresses/${userId}`, {
+    return fetch(`${url}/addresses/${userId}`, {
         method: "GET",
         headers: {
             Accept: "application/json",
@@ -216,19 +223,24 @@ function fillAddressBook(arr) {
 }
 
 function deleteAddress(id) {
- //fetches new data
- fetch(`${url}/address/delete`, {
-    method: "DELETE",
-    headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-    },
-    body: JSON.stringify({id: id})
-})
-    .then((res) => res.json())
-    .then((res) => {
-        console.log(res); //TO DO : Handle returned status;
-        getAddresses();
+    //fetches new data
+    fetch(`${url}/address/delete`, {
+        method: "DELETE",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id: id })
     })
-    .catch((err) => console.error(err));
+        .then((res) => res.json())
+        .then((res) => {
+            popup.setAttribute('status', 'success');
+            popup.setAttribute('text', `Address successfully deleted`);
+            getAddresses();
+        })
+        .catch((err) => {
+            console.error(err);
+            popup.setAttribute('status', 'error');
+            popup.setAttribute('text', `Uh oh, there appears to have been a problem. If the issue persists, try again later.`);
+        });
 }
