@@ -163,11 +163,16 @@ function fillAddressList(addresses) {
 function order(e) {
     e.preventDefault();
 
-    const address = parseInt(document.querySelector('input[name="address"]:checked').value);
-    const branch = parseInt(document.getElementById('branch').value);
+    let address = document.querySelector('input[name="address"]:checked');
+    if (address !== null) address = parseInt(address.value);
+
+    let branch = document.getElementById('branch').value;
+    if (branch !== 'null') branch = parseInt(branch);
+
     const code = document.getElementById('country-code').value;
     const phone = document.getElementById('phone').value;
     const phoneNumber = `${code}-${phone}`;
+
     const date = new Date();
     const od = {
         day: date.getDate(),
@@ -180,6 +185,8 @@ function order(e) {
     const totalPrice = parseFloat(document.getElementById('totalSum').innerText.replace('$', ''));
     const id = `${userId}${od.year}${od.month}${od.day}${od.hour}${od.minute}`;
     const captcha = document.getElementById('g-recaptcha-response').value;
+
+    if (!validateOrder(address, phone, branch)) return false;
 
     fetch(`${url}/orders/add`, {
         method: "POST",
@@ -245,4 +252,17 @@ function addItemsToOrder(orderId) {
             console.error(err);
             return false;
         });
+}
+
+function validateOrder(address, phone, branch) {
+    let field = '';
+    console.log(address, phone, branch)
+    if (!address) field = 'address'
+    else if (!phone) field = 'phone'
+    else if (!branch || branch === 'null') field = 'branch'
+    else return true;
+
+    popup.setAttribute('status', 'error');
+    popup.setAttribute('text', `You need to fill in the ${field} field`);
+    return false;
 }
