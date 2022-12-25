@@ -10,13 +10,14 @@
     <link rel="stylesheet" href="./../components/account_form/form.css" type="text/css" />
     <link rel="stylesheet" href="./profile.css" type="text/css" />
 
-    <script src="./../global.js" async></script>
+    <script src="./../global.js" defer></script>
     <script src="./../components/navbar.js" defer></script>
     <script src="./../components/footer.js" defer></script>
     <script src="./../components/popup.js" defer></script>
     <script src="./../components/account_form/country_code.js" defer></script>
     <script src="./../components/account_form/date_of_birth.js" defer></script>
-    <script src="./profile.js" defer></script>
+    <script src="./user_info.js" defer></script>
+    <script src="./addresses.js" defer></script>
   </head>
 
   <body>
@@ -24,7 +25,7 @@
       <navbar-component></navbar-component>
 
       <main class="sm">
-        <form id="account-details" class="account-form left-decoration">
+        <form id="account-details" onsubmit="updateInfo(event)" name="editProfile" class="account-form left-decoration">
           <h2>Edit Account Details</h2>
           <div class="double-field">
             <div class="input-box">
@@ -82,7 +83,7 @@
             <div class="phone-field">
               <select
                 class="style1"
-                name="country-code"
+                name="countryCode"
                 id="country-code"
               ></select>
               <input class="style1" type="tel" name="phone" id="phone" />

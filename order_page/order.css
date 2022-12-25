@@ -483,6 +483,7 @@
 .food-details .details h3 {
   font-size: 1.8em;
   color: var(--primary-900);
+  white-space: nowrap;
 }
 
 .food-details .details h4 {

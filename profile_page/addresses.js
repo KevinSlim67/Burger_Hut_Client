@@ -1,5 +1,3 @@
-const url = "http://localhost:5000/users";
-
 getAddresses();
 
 function createAddress() {
