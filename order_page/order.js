@@ -85,7 +85,6 @@ function createItem(item) {
 
     itemCard.addEventListener('click', () => showItemDetails(item), false);
 
-
     return itemCard;
 }
 
@@ -236,7 +235,7 @@ function addToCart(foodId) {
                 }
             });
             if (!exists) cart.push({ ...res, amount: amount });
-            
+
             sessionStorage.setItem('cart', JSON.stringify(cart));
             updateCartBtnAmount();
             handleSuccessPopup(amount, res);
