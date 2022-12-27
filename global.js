@@ -1,3 +1,5 @@
+const url = 'http://localhost:5000';
+
 const layout = document.getElementById('layout');
 
 //create blank popup-component

@@ -122,7 +122,7 @@ function addAddress(e) {
     const address = extractData();
     if (address === null) return;
 
-    fetch(`${url}/add-address`, {
+    fetch(`${url}/users/add-address`, {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -195,7 +195,7 @@ function createAddressBox(address) {
 //Get all of the user's addresses
 function getAddresses() {
     let userId = sessionStorage.getItem('userId');
-    return fetch(`${url}/addresses/${userId}`, {
+    return fetch(`${url}/users/addresses/${userId}`, {
         method: "GET",
         headers: {
             Accept: "application/json",
@@ -222,7 +222,7 @@ function fillAddressBook(arr) {
 
 function deleteAddress(id) {
     //fetches new data
-    fetch(`${url}/address/delete`, {
+    fetch(`${url}/users/address/delete`, {
         method: "DELETE",
         headers: {
             Accept: "application/json",

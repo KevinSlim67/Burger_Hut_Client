@@ -1,4 +1,3 @@
-const url = "http://localhost:5000/users";
 const form = document.editProfile;
 
 getUserInfo();
@@ -6,7 +5,7 @@ getUserInfo();
 //fill Edit Account Profile info with user's current information
 function getUserInfo() {
     let userId = sessionStorage.getItem('userId');
-    fetch(`${url}/${userId}`, {
+    fetch(`${url}/users/${userId}`, {
         method: "GET",
         headers: {
             Accept: "application/json",
@@ -42,7 +41,7 @@ function updateInfo(e) {
     e.preventDefault();
     console.log(retrieveUserInfo());
 
-    fetch(`${url}/edit`, {
+    fetch(`${url}/users/edit`, {
         method: "PATCH",
         headers: {
             Accept: "application/json",

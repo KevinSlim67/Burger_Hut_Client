@@ -1,5 +1,3 @@
-const url = "http://localhost:5000";
-
 const popup = document.getElementById('popup');
 let temporaryTotalAmount = 0; //stores total amount of items added, it resets to 0 when popup setTimeout() is done
 let timerId = null; //stores the current popup timer, useful to terminate it in case another one is triggered before this one is finished

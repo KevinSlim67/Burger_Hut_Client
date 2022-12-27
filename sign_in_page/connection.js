@@ -1,7 +1,7 @@
 const message = document.getElementById("message");
 const errorColor = "#c30000";
 const successColor = "#189c00";
-const url = "http://localhost:5000/users";
+
 
 //if user already logged in before, redirect to home page immediately
 if (localStorage.getItem('userId') !== null) {
@@ -25,7 +25,7 @@ function authenticateUser(e) {
         })()
     };
 
-    fetch(`${url}/auth`, {
+    fetch(`${url}/users/auth`, {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -49,7 +49,7 @@ function registerUser(e) {
     const data = extractData();
     if (data === null) return;
 
-    fetch(`${url}/register`, {
+    fetch(`${url}/users/register`, {
         method: "POST",
         headers: {
             Accept: "application/json",

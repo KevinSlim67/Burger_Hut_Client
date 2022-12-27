@@ -357,7 +357,7 @@
 }
 
 .food-card.favorite .add:hover {
-  filter: brightness(1) sepia(1) saturate(100%);
+  filter: brightness(0.6) sepia(1) saturate(600%);
 }
 
 .food-card .add img {

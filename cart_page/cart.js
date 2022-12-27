@@ -1,4 +1,3 @@
-const url = "http://localhost:5000";
 const id = sessionStorage.getItem('userId') || localStorage.getItem('userId');
 let avgCookTime = 0;
 

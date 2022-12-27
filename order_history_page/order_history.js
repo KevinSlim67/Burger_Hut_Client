@@ -1,11 +1,10 @@
-const url = 'http://localhost:5000/orders'
 userId = sessionStorage.getItem('userId');
 
 getOrders();
 
 //Get the 10 latest user's orders
 function getOrders() {
-    fetch(`${url}/${userId}`, {
+    fetch(`${url}/orders/${userId}`, {
         method: "GET",
         headers: {
             Accept: "application/json",
@@ -71,7 +70,7 @@ function createOrderBox(order) {
 }
 
 function getFood(orderId) {
-    fetch(`${url}/food/${orderId}`, {
+    fetch(`${url}/orders/food/${orderId}`, {
         method: "GET",
         headers: {
             Accept: "application/json",
