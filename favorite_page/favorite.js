@@ -1,4 +1,4 @@
-getFavoriteItems(sessionStorage.getItem('userId'));
+getFavoriteItems(userId);
 
 //get list of user's favorite food items 
 function getFavoriteItems(id) {

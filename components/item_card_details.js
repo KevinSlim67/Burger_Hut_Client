@@ -79,20 +79,26 @@ function addToCart(foodId) {
 //handles the success popup that appear if addToCart() is successful
 function handleSuccessPopup(amount, res) {
     popup.setAttribute('status', 'success');
+    if (!(temporaryFoodId === res.id || temporaryFoodId === null)) {
+        temporaryTotalAmount = 0;
+    }
+
     popup.setAttribute('text', `${amount + temporaryTotalAmount} ${res.name}(s) added to cart`);
+
     //if the timer of the first timer isn't done, then cancel it, and start a new timer
     //with the amount updated
-    if (timerId === null) {
+    if (timerId !== null) {
+        clearTimeout(timerId);
         timerId = setTimeout(() => {
             temporaryTotalAmount = 0;
         }, 5000);
     } else {
-        clearTimeout(timerId);
         timerId = setTimeout(() => {
             temporaryTotalAmount = 0;
         }, 5000);
     }
     temporaryTotalAmount += amount;
+    temporaryFoodId = res.id;
 }
 
 //displays a box that displays all details about item such as ingredients and cooktime 

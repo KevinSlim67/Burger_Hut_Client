@@ -4,7 +4,6 @@ getUserInfo();
 
 //fill Edit Account Profile info with user's current information
 function getUserInfo() {
-    let userId = sessionStorage.getItem('userId');
     fetch(`${url}/users/${userId}`, {
         method: "GET",
         headers: {
@@ -69,7 +68,7 @@ function updateInfo(e) {
 
 function retrieveUserInfo() {
     return {
-        id: sessionStorage.getItem('userId'),
+        id: userId,
         first_name: form.firstName.value,
         last_name: form.lastName.value,
         gender: document.querySelector('input[name="gender"]:checked').value,

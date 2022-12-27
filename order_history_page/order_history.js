@@ -1,5 +1,3 @@
-userId = sessionStorage.getItem('userId');
-
 getOrders();
 
 //Get the 10 latest user's orders

@@ -1,4 +1,3 @@
-const id = sessionStorage.getItem('userId') || localStorage.getItem('userId');
 let avgCookTime = 0;
 
 getCartItems();
@@ -195,7 +194,7 @@ function order(e) {
         },
         body: JSON.stringify({
             id: id,
-            userId: sessionStorage.getItem('userId'),
+            userId: userId,
             branchId: branch,
             addressId: address,
             phoneNumber: phoneNumber,
