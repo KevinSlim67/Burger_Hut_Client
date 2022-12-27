@@ -7,12 +7,13 @@
     <title>Burger Hut | Favorite</title>
 
     <link rel="stylesheet" href="./../global.css" type="text/css" />
-    <link rel="stylesheet" href="./favorite.css" type="text/css" />
+    <link rel="stylesheet" href="./../order_page/order.css" type="text/css" />
 
     <script src="./../global.js" async></script>
     <script src="./../components/navbar.js" defer></script>
     <script src="./../components/footer.js" defer></script>
     <script src="./../components/popup.js" defer></script>
+    <script src="./../components/item_card.js" defer></script>
     <script src="./favorite.js" defer></script>
   </head>
 
@@ -33,8 +34,8 @@
         <button onclick="search()" class="search type1">Search</button>
       </section>
 
+      <p class="title margin">Here's a list of your favorite food items</p>
       <section class="food-list">
-        <p class="title margin">Here's a list of your favorite food items</p>
         <div id="food-list" class="layout"></div>
       </section>
 

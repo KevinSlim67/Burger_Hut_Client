@@ -352,9 +352,12 @@
   background-repeat: no-repeat;
 }
 
-.food-card .add:hover {
+.food-card .add:hover, .food-card.favorite .add {
   filter: brightness(0.5) sepia(1) saturate(600%);
-  transform: translateY(0);
+}
+
+.food-card.favorite .add:hover {
+  filter: brightness(1) sepia(1) saturate(100%);
 }
 
 .food-card .add img {
