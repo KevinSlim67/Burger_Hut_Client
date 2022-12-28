@@ -126,7 +126,6 @@ function removeFromFavorites(itemCard) {
         .then((res) => {
             const url = window.location.href;
             if (url.includes('favorite')) getFavoriteItems(sessionStorage.getItem('userId'));
-            else getCategoryItems(itemCard.getAttribute('category'));
         })
         .catch((err) => {
             popup.setAttribute("status", "error");

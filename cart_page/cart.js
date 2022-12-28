@@ -123,7 +123,7 @@ function removeAll(foodId) {
 }
 
 function getAddresses() {
-    fetch(`${url}/users/addresses/${id}`, {
+    fetch(`${url}/users/addresses/${userId}`, {
         method: "GET",
         headers: {
             Accept: "application/json",
@@ -170,6 +170,8 @@ function order(e) {
     const code = document.getElementById('country-code').value;
     const phone = document.getElementById('phone').value;
     const phoneNumber = `${code}-${phone}`;
+    let specialInstructions = document.getElementById('specialInstructions').value;
+    if (specialInstructions === '') specialInstructions = null;
 
     const date = new Date();
     const od = {
@@ -181,7 +183,7 @@ function order(e) {
         second: date.getSeconds()
     }
     const totalPrice = parseFloat(document.getElementById('totalSum').innerText.replace('$', ''));
-    const id = `${userId}${od.year}${od.month}${od.day}${od.hour}${od.minute}`;
+    const orderId = `${userId}${od.year}${od.month}${od.day}${od.hour}${od.minute}`;
     const captcha = document.getElementById('g-recaptcha-response').value;
 
     if (!validateOrder(address, phone, branch)) return false;
@@ -193,7 +195,7 @@ function order(e) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            id: id,
+            id: orderId,
             userId: userId,
             branchId: branch,
             addressId: address,
@@ -201,6 +203,7 @@ function order(e) {
             totalPrice: totalPrice,
             estimatedTime: avgCookTime,
             orderedDate: `${od.year}-${od.month}-${od.day} ${od.hour}:${od.minute}:${od.second}`,
+            specialInstructions: specialInstructions,
             captcha: captcha
         })
     })
@@ -210,7 +213,7 @@ function order(e) {
                 popup.setAttribute('status', 'error');
                 popup.setAttribute('text', `Uh oh, it seems the captcha verification wasn't completed.`);
             } else {
-                addItemsToOrder(id);
+                addItemsToOrder(orderId);
             }
         })
         .catch((err) => {
@@ -254,7 +257,6 @@ function addItemsToOrder(orderId) {
 
 function validateOrder(address, phone, branch) {
     let field = '';
-    console.log(address, phone, branch)
     if (!address) field = 'address'
     else if (!phone) field = 'phone'
     else if (!branch || branch === 'null') field = 'branch'

@@ -554,7 +554,8 @@ footer .copyright {
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
-  width: 50%;
+  width: 95%;
+  max-width: 650px;
   padding: 1em;
   border-radius: 5px;
   border-style: solid;
