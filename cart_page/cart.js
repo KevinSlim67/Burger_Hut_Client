@@ -123,7 +123,7 @@ function removeAll(foodId) {
 }
 
 function getAddresses() {
-    fetch(`${url}/users/addresses/${userId}`, {
+    fetch(`${url}/addresses/${userId}`, {
         method: "GET",
         headers: {
             Accept: "application/json",
