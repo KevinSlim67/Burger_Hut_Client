@@ -1,5 +1,6 @@
 const url = 'http://localhost:5000';
 
+let driverId = JSON.parse(sessionStorage.getItem('driverId'));
 let userId = JSON.parse(sessionStorage.getItem('userId'));
 if (userId === null) {
     userId = localStorage.getItem('userId');

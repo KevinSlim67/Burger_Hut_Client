@@ -24,9 +24,9 @@ class Footer extends HTMLElement {
                 <div class="social-media">
                     <h3>Follow Us</h3>
                     <div>
-                        <a href="#"><img src="./../assets/icons/facebook.png" alt=""></a>
-                        <a href="#"><img src="./../assets/icons/twitter.png" alt=""></a>
-                        <a href="#"><img src="./../assets/icons/instagram.png" alt=""></a>
+                        <a href="#"><img src="/./../assets/icons/facebook.png" alt=""></a>
+                        <a href="#"><img src="/./../assets/icons/twitter.png" alt=""></a>
+                        <a href="#"><img src="/./../assets/icons/instagram.png" alt=""></a>
                     </div>
                 </div>
 
