@@ -174,16 +174,10 @@ function order(e) {
     if (specialInstructions === '') specialInstructions = null;
 
     const date = new Date();
-    const od = {
-        day: date.getDate(),
-        month: date.getMonth() + 1,
-        year: date.getFullYear(),
-        hour: date.getHours(),
-        minute: date.getMinutes(),
-        second: date.getSeconds()
-    }
-    const totalPrice = parseFloat(document.getElementById('totalSum').innerText.replace('$', ''));
+    const od = getSeparatedDate(date);
     const orderId = `${userId}${od.year}${od.month}${od.day}${od.hour}${od.minute}`;
+
+    const totalPrice = parseFloat(document.getElementById('totalSum').innerText.replace('$', ''));
     const captcha = document.getElementById('g-recaptcha-response').value;
 
     if (!validateOrder(address, phone, branch)) return false;
@@ -246,6 +240,8 @@ function addItemsToOrder(orderId) {
         .then((res) => {
             popup.setAttribute('status', 'success');
             popup.setAttribute('text', `Order successfully sent ! Go to order history section to track your order.`);
+            sessionStorage.setItem('cart', '[]');
+            window.location.href = './../order_history_page/order_history.html';
         })
         .catch((err) => {
             popup.setAttribute('status', 'error');
@@ -265,4 +261,15 @@ function validateOrder(address, phone, branch) {
     popup.setAttribute('status', 'error');
     popup.setAttribute('text', `You need to fill in the ${field} field`);
     return false;
+}
+
+function getSeparatedDate(date) {
+    return {
+        day: date.getDate(),
+        month: date.getMonth() + 1,
+        year: date.getFullYear(),
+        hour: date.getHours(),
+        minute: date.getMinutes(),
+        second: date.getSeconds()
+    }
 }

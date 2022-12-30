@@ -1,9 +1,8 @@
-getOrders(sessionStorage.getItem('driverBranch'));
+getOrders(driverId);
 
 //Get the latest non-delivered orders
-function getOrders(branchId) {
-    console.log(branchId);
-    fetch(`${url}/orders/${branchId}/toDeliver`, {
+function getOrders(driverId) {
+    fetch(`${url}/orders/${driverId}/InTransit`, {
         method: "GET",
         headers: {
             Accept: "application/json",
@@ -12,7 +11,6 @@ function getOrders(branchId) {
     })
         .then((res) => res.json())
         .then((res) => {
-            console.log(res);
             fillOrderList(res);
         })
         .catch((err) => console.error(err));
@@ -69,9 +67,10 @@ function createOrderBox(order) {
     <p id=${`${id}-food`}>${getFood(id)}</p>
     <div>
         <span class="price">$${total_price}</span>
-        <button id="deliver-${id}" class="deliver" onclick="updateOrder(this)">
-            Deliver<img class="deliver-btn"src="./../../assets/icons/driver.png" />
-        </button>
+        <div class="buttons">
+            <button id="cancel-${id}" onclick="updateOrderCancelled(this)">Cancel Delivery</button>
+            <button id="delivered-${id}" onclick="updateOrderDelivered(this)">Delivered</button>
+        </div>
     </div>
     `;
 
@@ -117,10 +116,9 @@ function returnAddress(order) {
     return newAddress;
 }
 
-//sets the order as 'In Transit' and updates it with the id of the driver who decided to deliver
-function updateOrder(element) {
+//sets the order as 'Cancelled' and updates it with the id of the driver who decided to deliver
+function updateOrderCancelled(element) {
     const orderId = element.getAttribute('id').split('-')[1];
-    console.log(orderId);
     fetch(`${url}/orders/status`, {
         method: "PATCH",
         headers: {
@@ -129,19 +127,63 @@ function updateOrder(element) {
         },
         body: JSON.stringify({
             orderId: orderId,
-            status: 'In Transit',
-            driverId: driverId
+            status: 'Cancelled',
+            driverId: driverId,
         })
     })
         .then((res) => res.json())
         .then((res) => {
             popup.setAttribute('status', 'success');
-            popup.setAttribute('text', `Order successfully added to list of orders to deliver.`);
-            getOrders(sessionStorage.getItem('driverBranch'));
+            popup.setAttribute('text', `Order successfully cancelled.`);
+            getOrders(driverId);
         })
         .catch((err) => {
             popup.setAttribute('status', 'error');
-            popup.setAttribute('text', `Order could not be added to list orders to deliver.`);
+            popup.setAttribute('text', `Order could not be cancelled.`);
             console.error(err)
         });
+}
+
+//sets the order as 'Delivered' and updates it with the id of the driver who decided to deliver
+function updateOrderDelivered(element) {
+    const date = new Date();
+    const od = getSeparatedDate(date);
+    const deliveredDate = `${od.year}-${od.month}-${od.day} ${od.hour}:${od.minute}:${od.second}`;
+
+    const orderId = element.getAttribute('id').split('-')[1];
+    fetch(`${url}/orders/status`, {
+        method: "PATCH",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            orderId: orderId,
+            status: 'Delivered',
+            driverId: driverId,
+            deliveredDate: deliveredDate
+        })
+    })
+        .then((res) => res.json())
+        .then((res) => {
+            popup.setAttribute('status', 'success');
+            popup.setAttribute('text', `Order successfully set as 'Delivered'.`);
+            getOrders(driverId);
+        })
+        .catch((err) => {
+            popup.setAttribute('status', 'error');
+            popup.setAttribute('text', `Order could not be set as 'Delivered'.`);
+            console.error(err)
+        });
+}
+
+function getSeparatedDate(date) {
+    return {
+        day: date.getDate(),
+        month: date.getMonth() + 1,
+        year: date.getFullYear(),
+        hour: date.getHours(),
+        minute: date.getMinutes(),
+        second: date.getSeconds()
+    }
 }

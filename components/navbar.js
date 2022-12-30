@@ -15,6 +15,9 @@ if (window.location.href.includes('driver')) {
         sessionStorage.removeItem('cart');
     } else {
         navbar = driverSignedOut();
+        sessionStorage.removeItem('driverId');
+        sessionStorage.removeItem('driverName');
+        sessionStorage.removeItem('driverBranch');
     }
 
     sessionStorage.removeItem('userId');
@@ -167,8 +170,8 @@ function driverSignedIn() {
                 <h1>Burger Hut</h1>
             </div>
             <div class="links">
-                <a href="/./../orders_page/orders.html">Orders</a>
-                <a href="/./../orders_page/orders_deliver.html">Orders To Deliver</a>
+                <a href="/./../driver/orders_page/orders.html">Orders</a>
+                <a href="/./../driver/orders_to_deliver_page/orders.html">Orders To Deliver</a>
             </div>
         </div>
         ${buttons}
@@ -197,7 +200,7 @@ function driverSignedOut() {
             </div>
             <div class="links">
                 <a href="/./../orders_page/orders.html">Orders</a>
-                <a href="/./../orders_page/orders_deliver.html">Orders To Deliver</a>
+                <a href="/./../orders_to_deliver_page/orders.html">Orders To Deliver</a>
             </div>
         </div>
     </div>

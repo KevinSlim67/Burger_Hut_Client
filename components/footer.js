@@ -9,15 +9,15 @@ class Footer extends HTMLElement {
             <div class="wrapper">
                 <ul class="contact">
                     <h3>Contact</h3>
-                    <li><img src="./../assets/icons/phone.png" alt="">
+                    <li><img src="/./../assets/icons/phone.png" alt="">
                         loremipsum@gmail.com</li>
-                    <li><img src="./../assets/icons/message.png" alt="">+(961) 55 555 555
+                    <li><img src="/./../assets/icons/message.png" alt="">+(961) 55 555 555
                         (Dekwaneh)</li>
-                    <li><img src="./../assets/icons/message.png" alt="">+(961) 55 555 555
+                    <li><img src="/./../assets/icons/message.png" alt="">+(961) 55 555 555
                         (Achrafieh)</li>
-                    <li><img src="./../assets/icons/message.png" alt="">+(961) 55 555 555
+                    <li><img src="/./../assets/icons/message.png" alt="">+(961) 55 555 555
                         (Antelias)</li>
-                    <li><img src="./../assets/icons/message.png" alt="">+(961) 55 555 555
+                    <li><img src="/./../assets/icons/message.png" alt="">+(961) 55 555 555
                         (Sin El Fil)</li>
                 </ul>
 

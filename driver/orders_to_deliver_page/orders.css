@@ -140,9 +140,19 @@ h2 {
   color: rgba(0, 0, 0, 0.2);
 }
 
-.orders-list .deliver-btn {
-  filter: brightness(0.43) sepia(1) saturate(600%);
-  max-width: 1.2rem;
-  max-height: 1.2rem;
-  margin-left: 0.5em;
+.orders-list .order .buttons {
+  display: flex;
+  gap: 1em;
+}
+
+.orders-list .order button {
+  background-color: var(--primary-500) !important;
+  border-radius: 0.3em;
+  padding: 0.8em 1.2em;
+  font-size: 1em;
+  color: white;
+}
+
+.orders-list .order button:hover {
+  background-color: var(--primary-400) !important;
 }

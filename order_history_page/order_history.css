@@ -63,6 +63,14 @@
   color: white;
 }
 
+.order-history .order .status.Cancelled {
+  background-color: rgb(177, 43, 43);
+}
+
+.order-history .order .status.Delivered {
+  background-color: var(--primary-400);
+}
+
 .order-history .order ul {
   list-style: none;
   display: flex;

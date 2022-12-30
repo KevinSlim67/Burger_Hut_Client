@@ -22,6 +22,12 @@ function fillOrderList(arr) {
     const list = document.getElementById('order-list');
     list.innerHTML = '';
 
+    if (arr.length === 0) {
+        list.innerHTML = `
+        <p class="title"> There doesn't seem to be any orders at the present time</p>
+        `;
+    }
+
     arr.forEach(e => {
         list.appendChild(createOrderBox(e));
     });
@@ -29,10 +35,14 @@ function fillOrderList(arr) {
 
 //create a box where you can see a user's previous or ongoing order
 function createOrderBox(order) {
-    const { id, status, ordered_date, total_price, phone_number, driver_id } = order;
-    const orderedDate = ordered_date.substring(0, ordered_date.indexOf('.')).replace('T', ' ');
-    let driverField = '';
-    if (driver_id !== null) driverField = `<li><img src="./../assets/icons/order_driver.png" alt="">Driver</li>`
+    const { id, status, ordered_date, total_price, phone_number, driver_id, first_name, last_name, delivered_date } = order;
+
+    const deliveredDateField = formatDate(delivered_date);
+    const orderedDateField = formatDate(ordered_date);
+
+    if (driver_id !== null) {
+        driverField = `<li><img src="./../assets/icons/order_person.png" alt="">${first_name + ' ' + last_name}</li>`;
+    }
 
     const orderBox = document.createElement('div');
     orderBox.classList.add('order');
@@ -40,12 +50,12 @@ function createOrderBox(order) {
     orderBox.innerHTML = `
     <div>
         <h2>Order ID: ${id}</h2>
-        <span class="status">${status}</span>
+        <span class="status ${status}">${status}</span>
     </div>
     <div class="info">
         <ul>
-            <li><img src="./../assets/icons/order_date.png" alt="">${orderedDate}</li>
-            <li><img src="./../assets/icons/order_date.png" alt="">${orderedDate}</li>
+            ${orderedDateField}
+            ${deliveredDateField}
             <li><img src="./../assets/icons/order_address.png" alt="">Home</li>
         </ul>
         <ul>
@@ -82,4 +92,13 @@ function getFood(orderId) {
             order.innerText = list;
         })
         .catch((err) => console.error(err));
+}
+
+function formatDate(date) {
+    let dateHTML = '';
+    if (date !== null) {
+        const newDate = date.substring(0, date.indexOf('.')).replace('T', ' ');
+        dateHTML = `<li><img src="./../assets/icons/order_date.png" alt="">${newDate}</li>`;
+    }
+    return dateHTML;
 }
