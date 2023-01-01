@@ -2,7 +2,6 @@ getOrders(sessionStorage.getItem('driverBranch'));
 
 //Get the latest non-delivered orders
 function getOrders(branchId) {
-    console.log(branchId);
     fetch(`${url}/orders/${branchId}/toDeliver`, {
         method: "GET",
         headers: {
@@ -12,7 +11,6 @@ function getOrders(branchId) {
     })
         .then((res) => res.json())
         .then((res) => {
-            console.log(res);
             fillOrderList(res);
         })
         .catch((err) => console.error(err));
@@ -120,7 +118,6 @@ function returnAddress(order) {
 //sets the order as 'In Transit' and updates it with the id of the driver who decided to deliver
 function updateOrder(element) {
     const orderId = element.getAttribute('id').split('-')[1];
-    console.log(orderId);
     fetch(`${url}/orders/status`, {
         method: "PATCH",
         headers: {

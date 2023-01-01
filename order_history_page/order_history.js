@@ -40,6 +40,7 @@ function createOrderBox(order) {
     const deliveredDateField = formatDate(delivered_date);
     const orderedDateField = formatDate(ordered_date);
 
+    let driverField = '';
     if (driver_id !== null) {
         driverField = `<li><img src="./../assets/icons/order_person.png" alt="">${first_name + ' ' + last_name}</li>`;
     }

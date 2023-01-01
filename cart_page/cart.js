@@ -207,7 +207,12 @@ function order(e) {
                 popup.setAttribute('status', 'error');
                 popup.setAttribute('text', `Uh oh, it seems the captcha verification wasn't completed.`);
             } else {
-                addItemsToOrder(orderId);
+                addItemsToOrder({
+                    orderId: orderId,
+                    firstName: sessionStorage.getItem('firstName'),
+                    phone: phoneNumber,
+                    price: totalPrice
+                });
             }
         })
         .catch((err) => {
@@ -220,7 +225,8 @@ function order(e) {
 }
 
 //add food items to the order that was just sent
-function addItemsToOrder(orderId) {
+function addItemsToOrder(orderDetails) {
+    const { orderId, firstName, phone, price } = orderDetails;
     const cart = JSON.parse(sessionStorage.getItem('cart')).map(e => {
         return { id: e.id, amount: e.amount };
     });
@@ -233,7 +239,7 @@ function addItemsToOrder(orderId) {
         },
         body: JSON.stringify({
             orderId: orderId,
-            cart: cart,
+            cart: cart
         })
     })
         .then((res) => res.json())
