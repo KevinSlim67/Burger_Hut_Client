@@ -129,7 +129,7 @@ a.type1 {
   touch-action: manipulation;
   width: fit-content;
   cursor: pointer;
-  transition: all 0.5s;
+  transition: box-shadow 0.1s ease-in, transform 0.2s ease-in-out;
   text-decoration: none;
 }
 
@@ -137,8 +137,7 @@ button.type1:hover,
 input[type="submit"].type1:hover,
 a.type1:hover {
   box-shadow: var(--primary-400-30) 0 1px 30px;
-  transition-duration: 0.1s;
-  transform: translateY(-5%);
+  transform: translateY(-8%);
 }
 
 input:focus {
