@@ -5,6 +5,8 @@ function showItemDetails(item) {
     body.appendChild(div);
 }
 
+
+
 function incrementCounter() {
     const counter = document.getElementsByClassName('number')[0];
     let num = parseInt(counter.textContent);
@@ -17,12 +19,17 @@ function decrementCounter() {
     if (num - 1 >= 0) counter.textContent = --num;
 }
 
-//removes food item details pane
 function hideItemDetails() {
     const body = document.body;
     const itemDetails = document.getElementsByClassName('food-details')[0];
-    if (itemDetails !== undefined) body.removeChild(itemDetails);
-}
+    if (itemDetails !== undefined) {
+      const details = itemDetails.getElementsByClassName('details')[0];
+      details.classList.add('slide-out'); // add 'slide-out' class to 'details' div
+      setTimeout(() => {
+        body.removeChild(itemDetails);
+      }, 150); // remove element after 0.5 seconds (to give the animation time to finish)
+    }
+  }
 
 //add food item to cart, and specifies the amount added
 function addToCart(foodId) {
@@ -115,10 +122,10 @@ function createItemDetails(item) {
     </div>` : '';
 
     const itemDetails = document.createElement('div');
-    itemDetails.classList.add('food-details');
+    itemDetails.classList.add('food-details'); 
     itemDetails.innerHTML = `
     <img src="data:image/png;base64, ${image}">
-    <div class="details">
+    <div class="details slide-in">
         <div class="info">
             <div>
                 <div class="split-container">
@@ -149,7 +156,6 @@ function createItemDetails(item) {
         </div>
     </div>
     <button class="back" onclick="hideItemDetails()"></button>
-    <button class="favorite"></button>
     `;
     return itemDetails;
 }
