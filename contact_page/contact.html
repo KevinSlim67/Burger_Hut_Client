@@ -13,6 +13,7 @@
     <script src="./../global.js" defer></script>
     <script src="./../components/navbar.js" defer></script>
     <script src="./../components/footer.js" defer></script>
+    <script src="./../components/popup.js" defer></script>
     <script src="./contact.js" defer></script>
   </head>
 
@@ -21,7 +22,7 @@
       <navbar-component></navbar-component>
 
       <main class="sm">
-        <form onsubmit="sendEmail()" class="account-form">
+        <form onsubmit="sendEmail(event)" name="contact" class="account-form">
           <h2>Get in touch with us !</h2>
 
           <div class="input-box">
@@ -31,11 +32,11 @@
 
           <select name="type" id="type">
             <option disabled selected>Select Message Type</option>
-            <option value="book-reservation">Book Reservation</option>
-            <option value="birthday-reservation">Birthday Reservation</option>
-            <option value="job-application">Job Application</option>
-            <option value="technical-support">Technical Support</option>
-            <option value="formal-complaint">Formal Complaint</option>
+            <option value="Reservation">Book Reservation</option>
+            <option value="Birthday Reservation">Birthday Reservation</option>
+            <option value="Job Application">Job Application</option>
+            <option value="Technical Support">Technical Support</option>
+            <option value="Formal Complaint">Formal Complaint</option>
 
           </select>
 
