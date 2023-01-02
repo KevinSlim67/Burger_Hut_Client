@@ -239,7 +239,8 @@ function addItemsToOrder(orderDetails) {
         },
         body: JSON.stringify({
             orderId: orderId,
-            cart: cart
+            cart: cart,
+            email: sessionStorage.getItem('userEmail')
         })
     })
         .then((res) => res.json())

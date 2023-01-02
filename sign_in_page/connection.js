@@ -131,16 +131,18 @@ function handleRegistrationStatus(data) {
 
 //handles errors and success of authentication that are a result of server output 
 function handleAuthenticationStatus(data, rememberMe) {
-    const { status, id, firstName } = data;
+    const { status, id, firstName, email } = data;
     switch (status) {
         case "FOUND":
             //add user id and name to local storage so they can be used across the website
             if (rememberMe) {
                 localStorage.setItem('userId', id);
                 localStorage.setItem('firstName', firstName);
+                localStorage.setItem('userEmail', email);
             }
             sessionStorage.setItem('userId', id);
             sessionStorage.setItem('firstName', firstName);
+            sessionStorage.setItem('userEmail', email);
             sessionStorage.setItem('cart', JSON.stringify([]));
             window.location.replace("./../home_page/home.html");
             break;

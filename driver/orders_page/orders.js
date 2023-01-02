@@ -127,7 +127,8 @@ function updateOrder(element) {
         body: JSON.stringify({
             orderId: orderId,
             status: 'In Transit',
-            driverId: driverId
+            driverId: driverId,
+            email: sessionStorage.getItem('userEmail')
         })
     })
         .then((res) => res.json())

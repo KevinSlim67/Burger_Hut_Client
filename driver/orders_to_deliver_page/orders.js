@@ -129,6 +129,7 @@ function updateOrderCancelled(element) {
             orderId: orderId,
             status: 'Cancelled',
             driverId: driverId,
+            email: sessionStorage.getItem('userEmail')
         })
     })
         .then((res) => res.json())
@@ -161,7 +162,8 @@ function updateOrderDelivered(element) {
             orderId: orderId,
             status: 'Delivered',
             driverId: driverId,
-            deliveredDate: deliveredDate
+            deliveredDate: deliveredDate,
+            email: sessionStorage.getItem('userEmail')
         })
     })
         .then((res) => res.json())
