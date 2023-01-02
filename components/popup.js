@@ -23,10 +23,10 @@ class Popup extends HTMLElement {
 
     setTimer = () => {
         return setTimeout(() => {
-            this.style.display = 'none';
+            fadeOut(this);
             this.timer = false;
         }, 5000);
-    }
+    };
 
     updateText = (newValue, oldValue) => {
         this.isUpdating = true;
@@ -37,7 +37,7 @@ class Popup extends HTMLElement {
         `;
 
         this.isUpdating = false;
-        this.style.display = 'block';
+        fadeIn(this);
 
         if (this.timer === false) {
             this.timer = true;
@@ -77,13 +77,48 @@ class Popup extends HTMLElement {
     static close() {
         const popup = document.getElementById('popup');
         clearTimeout(popup.timerId);
-        popup.style.display = 'none';
+        fadeOut(popup)
         popup.timer = false;
     }
 
     static get observedAttributes() {
         return ["text", "status"];
     }
+}
+
+function fadeIn(element, duration = 100, start = 0, end = 1) {
+    element.style.opacity = start;
+    element.style.display = "block";
+
+    let last = +new Date();
+    let tick = function () {
+        element.style.opacity = +element.style.opacity + (new Date() - last) / duration;
+        last = +new Date();
+
+        if (+element.style.opacity < end) {
+            (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
+        }
+    };
+
+    tick();
+}
+
+function fadeOut(element, duration = 100, start = 1, end = 0) {
+    element.style.opacity = start;
+
+    let last = +new Date();
+    let tick = function () {
+        element.style.opacity = +element.style.opacity - (new Date() - last) / duration;
+        last = +new Date();
+
+        if (+element.style.opacity > end) {
+            (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
+        } else {
+            element.style.display = "none";
+        }
+    };
+
+    tick();
 }
 
 
