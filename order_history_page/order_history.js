@@ -69,7 +69,7 @@ function createOrderBox(order) {
     <p id=${`${id}-food`}>${getFood(id)}</p>
     <div>
         <span class="price">$${total_price}</span>
-        <button class="re-order">
+        <button class="re-order" onclick="reorder()">
             <img src="./../assets/icons/refresh.png" />Re-Order
         </button>
     </div>
@@ -102,4 +102,9 @@ function formatDate(date) {
         dateHTML = `<li><img src="./../assets/icons/order_date.png" alt="">${newDate}</li>`;
     }
     return dateHTML;
+}
+
+function reorder() {
+    popup.setAttribute('status', 'error');
+    popup.setAttribute('text', `Sorry, this feature has not been implemented yet!`);
 }
