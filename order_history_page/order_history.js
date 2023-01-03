@@ -35,7 +35,7 @@ function fillOrderList(arr) {
 
 //create a box where you can see a user's previous or ongoing order
 function createOrderBox(order) {
-    const { id, status, ordered_date, total_price, phone_number, driver_id, first_name, last_name, delivered_date } = order;
+    const { id, status, ordered_date, total_price, phone_number, driver_id, first_name, last_name, delivered_date, city } = order;
 
     const deliveredDateField = formatDate(delivered_date);
     const orderedDateField = formatDate(ordered_date);
@@ -61,7 +61,7 @@ function createOrderBox(order) {
         </ul>
         <ul>
             <li><img src="./../assets/icons/order_phone.png" alt="">${phone_number}</li>
-            <li><img src="./../assets/icons/order_branch.png" alt="">Dekwaneh</li>
+            <li><img src="./../assets/icons/order_branch.png" alt="">${city}</li>
             ${driverField}
         </ul>
     </div>
