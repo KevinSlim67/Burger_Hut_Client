@@ -4,11 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="/assets/logo_primary.png">
+    <link rel="icon" type="image/x-icon" href="/assets/logo_primary.png" />
     <title>Burger Hut | Contact</title>
 
     <link rel="stylesheet" href="./../global.css" type="text/css" />
-    <link rel="stylesheet" href="./../components/account_form/form.css" type="text/css">
+    <link
+      rel="stylesheet"
+      href="./../components/account_form/form.css"
+      type="text/css"
+    />
     <link rel="stylesheet" href="./contact.css" type="text/css" />
 
     <script src="./../global.js" defer></script>
@@ -22,12 +26,26 @@
     <div id="layout">
       <navbar-component></navbar-component>
 
+      <header>
+        <img src="/./assets/contact/header.jpg" alt="" />
+        <p>
+          We're here for you<br />
+          <span>Contact Us</span>
+        </p>
+      </header>
+
       <main class="sm">
         <form onsubmit="sendEmail(event)" name="contact" class="account-form">
           <h2>Get in touch with us !</h2>
 
           <div class="input-box">
-            <input class="style1" type="email" name="email" id="email" placeholder=""/>
+            <input
+              class="style1"
+              type="email"
+              name="email"
+              id="email"
+              placeholder=""
+            />
             <span>Email</span>
           </div>
 
@@ -38,15 +56,19 @@
             <option value="Job Application">Job Application</option>
             <option value="Technical Support">Technical Support</option>
             <option value="Formal Complaint">Formal Complaint</option>
-
           </select>
 
           <div class="input-box">
-            <textarea class="style1" name="message" id="message" placeholder=""></textarea>
+            <textarea
+              class="style1"
+              name="message"
+              id="message"
+              placeholder=""
+            ></textarea>
             <span>Enter your message</span>
           </div>
-          
-          <input class="type1 full submit" type="submit" value="Send Message">
+
+          <input class="type1 full submit" type="submit" value="Send Message" />
         </form>
       </main>
 

@@ -7,6 +7,40 @@ h2 {
   border-color: var(--primary-500);
 }
 
+header {
+  position: relative;
+  width: 100%;
+  height: clamp(200px, 35vw, 500px);
+  border-radius: 5px;
+  border: solid 1px var(--gray-50);
+  margin-bottom: 2em;
+}
+
+header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5) sepia(0.5) saturate(400%);
+}
+
+header p {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 1.8em;
+  color: white;
+  font-weight: 800;
+  text-shadow: 1px 1px black;
+  text-align: center;
+  line-height: 1.8em;
+}
+
+header p span {
+  color: var(--primary-400);
+  font-size: 1.3em;
+}
+
 .account-form textarea.style1 {
   height: 15em;
 }
