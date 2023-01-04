@@ -28,7 +28,7 @@ header p {
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
-  font-size: 1.8em;
+  font-size: clamp(1.5em, 2.5vw, 2em);;
   color: white;
   font-weight: 800;
   text-shadow: 1px 1px black;
