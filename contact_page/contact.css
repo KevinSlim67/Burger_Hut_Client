@@ -10,7 +10,7 @@ h2 {
 header {
   position: relative;
   width: 100%;
-  height: clamp(200px, 35vw, 500px);
+  height: clamp(200px, 38vw, 550px);
   border-radius: 5px;
   border: solid 1px var(--gray-50);
   margin-bottom: 2em;

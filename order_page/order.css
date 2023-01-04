@@ -1,3 +1,12 @@
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .cart-btn {
   width: fit-content;
   height: fit-content;
@@ -12,6 +21,7 @@
   align-items: center;
   text-decoration: none;
   color: white;
+  animation: slideFromRight 0.5s;
 }
 
 .cart-btn:visited {
@@ -32,6 +42,15 @@
 }
 
 /* welcome ----------------------------------- */
+@keyframes slideFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .welcome {
   font-size: 1rem;
   display: flex;
@@ -41,6 +60,7 @@
   position: relative;
   overflow-x: hidden;
   margin-top: 1rem;
+  animation: slideFromTop 1s;
 }
 
 .welcome img {
@@ -343,13 +363,25 @@
   right: 5%;
   z-index: 2;
   transition: none;
-  width: 2em;
-  height: 2em;
+  width: 2.1em;
+  height: 2.1em;
 
   background-image: url(./../assets/icons/nav_favorite.png);
   background-position: center;
   background-size: 70%;
   background-repeat: no-repeat;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .food-card .add:hover, .food-card.favorite .add {
@@ -359,6 +391,12 @@
 .food-card.favorite .add:hover {
   filter: brightness(0.6) sepia(1) saturate(600%);
 }
+
+.food-card .add:hover, .food-card.favorite .add:hover {
+  display: inline-block;
+  animation: pulse 1s infinite;
+}
+
 
 .food-card .add img {
   width: clamp(10px, 3vw, 20px);

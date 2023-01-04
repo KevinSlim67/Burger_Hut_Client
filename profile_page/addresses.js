@@ -289,7 +289,6 @@ function createAddress() {
 
     body.append(div);
     fetchDistricts();
-
 }
 
 function editAddressForm(address, id) {
