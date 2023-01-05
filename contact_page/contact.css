@@ -5,6 +5,7 @@ h2 {
   border-style: none none none solid;
   border-width: 4px;
   border-color: var(--primary-500);
+  align-self: flex-start;
 }
 
 header {
@@ -52,4 +53,22 @@ header p span {
   }
 }
 
-/* ----------------------------------------- */
+form {
+  --bg: white;
+  --input-h: 3em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5em;
+  width: 100%;
+  background-color: white;
+  border: solid 1px var(--gray-50);
+  padding: 3rem 0.5rem;
+  border-radius: 5px;
+}
+
+@media (min-width: 600px) {
+  form {
+    padding: 3rem;
+  }
+}

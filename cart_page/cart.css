@@ -26,7 +26,7 @@ h2 {
   gap: 0.3em;
 }
 
-.cart .cart-items .item h3{
+.cart .cart-items .item h3 {
   background-color: transparent;
 }
 
@@ -49,7 +49,7 @@ h2 {
 
 .cart .cart-items > .item {
   width: 100%;
-  height: clamp(11rem, 22vw, 15em);;
+  height: clamp(11rem, 22vw, 15em);
   display: flex;
   gap: 1.5em;
   position: relative;
@@ -190,9 +190,20 @@ h2 {
 
 /* Extra Information -------------------------------------------------- */
 .cart .extra-info {
+  --bg: white;
   display: flex;
   flex-direction: column;
   gap: 2em;
+  background-color: white;
+  padding: 1em;
+  border-radius: 5px;
+  border-radius: solid 1px var(--gray-50);
+}
+
+@media (min-width: 600px) {
+  .cart .extra-info {
+    padding: 1.5em;
+  }
 }
 
 .cart input,
@@ -265,7 +276,6 @@ h2 {
 .cart input[type="submit"] {
   width: 100%;
 }
-
 
 @media (min-width: 600px) {
   .cart input[type="submit"] {

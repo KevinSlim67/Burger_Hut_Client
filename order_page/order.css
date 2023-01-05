@@ -1,10 +1,6 @@
 @keyframes slideFromRight {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(0); }
 }
 
 .cart-btn {
@@ -43,12 +39,8 @@
 
 /* welcome ----------------------------------- */
 @keyframes slideFromTop {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(0); }
 }
 
 .welcome {
@@ -99,12 +91,8 @@
   position: relative;
   height: clamp(200px, 45vw, 550px);
   border-radius: 2rem;
-  background-image: linear-gradient(
-    92.88deg,
-    var(--primary-500) 9.16%,
-    var(--primary-400) 43.89%,
-    var(--primary-300) 64.72%
-  );
+  background: url(./../assets/order/pattern3.jpg);
+  background-repeat: repeat;
   overflow: hidden;
   padding-left: 1.5rem;
 
@@ -265,7 +253,7 @@
 }
 
 .food-list .layout {
-  width: min(100%, 900px);
+  width: min(100%, 870px);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -421,7 +409,6 @@
 
 @media (min-width: 600px) {
   .food-list .layout {
-    justify-content: center;
     gap: min(2vw, 1.5rem);
   }
 }

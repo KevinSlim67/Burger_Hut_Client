@@ -81,6 +81,10 @@ hr {
   box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.3);
 }
 
+.address-book .address p {
+  padding: 0.4em 0;
+}
+
 .address-book .btn-container {
   display: flex;
   align-items: center;
@@ -111,10 +115,6 @@ hr {
   .address-book .address {
     -webkit-box-shadow: 0px 2px 1px 1px rgba(0, 0, 0, 0.3);
     box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.3);
-  }
-
-  .address-book .address p {
-    padding: 0.4em 0;
   }
 }
 
