@@ -354,7 +354,7 @@ nav .sign.up {
 }
 
 nav .sign:hover {
-  background-color: var(--primary-300);
+  background-color: var(--primary-500);
 }
 
 nav .extra-links span {
