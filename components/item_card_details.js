@@ -135,7 +135,7 @@ function createItemDetails(item) {
                         ${cookTimeDiv}
                     </div>
                     <div class="right"> 
-                        <h4>$${price}</h4>
+                        <h4>${price}</h4>
                         <div class="counter">
                         <button onclick="decrementCounter(this)">-</button>
                         <span id="amount" class="number">0</span>

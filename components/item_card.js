@@ -37,7 +37,7 @@ function createItem(item) {
         <img class="picture" src="data:image/png;base64, ${image}" alt="${name}" loading="lazy" />
         <div class="content">
             <h3>${name}</h3>
-            <h4>$${price}</h4>
+            <h4>${price}</h4>
             <button class="view">View</button>
         </div>
         <button id="${id}-favorite" class="add" onclick="toggleFavorite(this); event.stopPropagation();"></button>

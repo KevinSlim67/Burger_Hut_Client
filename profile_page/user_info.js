@@ -38,7 +38,7 @@ function getDate(date) {
 
 function updateInfo(e) {
     e.preventDefault();
-    console.log(retrieveUserInfo());
+    const info = retrieveUserInfo();
 
     fetch(`${url}/users/edit`, {
         method: "PATCH",
@@ -46,14 +46,18 @@ function updateInfo(e) {
             Accept: "application/json",
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ user: retrieveUserInfo() })
+        body: JSON.stringify({ user: info })
     })
         .then((res) => res.json())
         .then((res) => {
             if (res.status === 'SUCCESS') {
                 popup.setAttribute('status', 'success');
                 popup.setAttribute('text', `Account details were successfully edited.`);
-                getAddresses();
+                sessionStorage.setItem('firstName', info.first_name);
+                if (localStorage.getItem('firstName') != 'null') {
+                    localStorage.setItem('firstName', info.first_name);
+                }
+                location.reload();
             } else {
                 popup.setAttribute('status', 'error');
                 popup.setAttribute('text', `Uh oh, it seems there was a problem. If the issue persists, please try again later.`);
