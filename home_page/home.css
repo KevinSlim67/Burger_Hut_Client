@@ -201,8 +201,16 @@ section {
   flex: 1 1 0;
 }
 
+.about-us .video {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+}
+
 .about-us iframe {
-  min-height: clamp(200px, 45vw, 550px);
+  width: 100%;
+  min-height: clamp(250px, 45vw, 550px);
+  max-height: 550px;
 }
 
 .about-us p {
@@ -219,7 +227,6 @@ section {
     min-height: clamp(10em, 25vw, 19.5em);
   }
 }
-
 /* ---------------------------------------------- */
 
 /* contact us ---------------------------------- */
@@ -516,5 +523,4 @@ section {
     display: none !important;
   }
 }
-
 /* reviews -------------------------------------*/
