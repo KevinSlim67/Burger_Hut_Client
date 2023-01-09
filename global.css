@@ -28,6 +28,7 @@
   --max-width: 1250px;
   --page-x-margin: clamp(1.3rem, 3vw, 2rem);
   --page-margin: 0 var(--page-x-margin);
+  --section-height: clamp(12.5rem, 45vw, 34.375rem);
 }
 
 * {
@@ -56,9 +57,14 @@ html {
 @media (min-width: 1400px) {
   html {
     font-size: 115%;
-    --max-width: 1550px;
+  }
+
+  :root {
+    --max-width: 1600px;
+    --section-height: clamp(12.5rem, 45vw, 44.375rem);
   }
 }
+
 
 body {
   background-color: var(--bg);
@@ -94,6 +100,12 @@ section, header {
   width: calc(100% - var(--page-x-margin));
   max-width: var(--max-width);
   margin: var(--page-margin);
+}
+
+.sm section {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .full {
@@ -181,7 +193,7 @@ p.margin {
 
 h2.title {
   color: var(--primary-900);
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
   padding: 0 0.8em;
   border-style: none none none solid;
   border-width: 4px;
