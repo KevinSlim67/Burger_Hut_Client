@@ -379,13 +379,9 @@
 /* reviews -------------------------------------*/
 .reviews {
   position: relative;
-  margin: 0 !important;
-  width: 100% !important;
-  max-width: none;
 }
 
 .reviews h2 {
-  margin: 0 var(--page-x-margin);
   margin-bottom: clamp(1rem, 2vw , 2rem);
 }
 
@@ -394,7 +390,7 @@
   scrollbar-width: none; /* Hide the scrollbar */
   overflow-x: scroll;
   white-space: nowrap;
-  padding: 1em var(--page-x-margin);
+  padding: 1em 0;
 }
 
 .reviews .review-card {

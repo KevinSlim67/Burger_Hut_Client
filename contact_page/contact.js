@@ -69,7 +69,7 @@ function collapsiblesFunction() {
         if (content.style.maxHeight) {
           content.style.maxHeight = null;
         } else {
-          content.style.maxHeight = '5rem';
+          content.style.maxHeight = '8rem';
           animateCollapse(content);
         }
       });

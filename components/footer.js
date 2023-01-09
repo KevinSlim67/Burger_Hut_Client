@@ -14,10 +14,10 @@ class Footer extends HTMLElement {
                         <input type="submit" id="newsletter-submit" value="" class="news">
                     </div>
                     <div class="social-media">
-                        <a href=""><img src="/./../assets/icons/facebook.svg"></a>
-                        <a href=""><img src="/./../assets/icons/twitter.svg"></a>
-                        <a href=""><img src="/./../assets/icons/instagram.svg"></a>
-                        <a href=""><img src="/./../assets/icons/youtube.svg"></a>
+                        <a href="https://www.facebook.com/" target="_blank"><img src="/./../assets/icons/facebook.svg"></a>
+                        <a href="https://twitter.com/" target="_blank"><img src="/./../assets/icons/twitter.svg"></a>
+                        <a href="https://www.instagram.com/" target="_blank"><img src="/./../assets/icons/instagram.svg"></a>
+                        <a href="https://www.youtube.com/" target="_blank"><img src="/./../assets/icons/youtube.svg"></a>
                     </div>
                 </div>
 

@@ -276,9 +276,10 @@ nav .logo {
 }
 
 nav h1 {
+  font-family: var(--font2);
   color: var(--primary-800);
   display: none;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 1.2em;
 }
 
