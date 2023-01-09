@@ -7,34 +7,46 @@ class Footer extends HTMLElement {
         this.innerHTML = `
         <footer>
             <div class="wrapper">
-                <ul class="contact">
-                    <h3>Contact</h3>
-                    <li><img src="/./../assets/icons/phone.png" alt="">
-                        loremipsum@gmail.com</li>
-                    <li><img src="/./../assets/icons/message.png" alt="">+(961) 55 555 555
-                        (Dekwaneh)</li>
-                    <li><img src="/./../assets/icons/message.png" alt="">+(961) 55 555 555
-                        (Achrafieh)</li>
-                    <li><img src="/./../assets/icons/message.png" alt="">+(961) 55 555 555
-                        (Antelias)</li>
-                    <li><img src="/./../assets/icons/message.png" alt="">+(961) 55 555 555
-                        (Sin El Fil)</li>
-                </ul>
-
-                <div class="social-media">
-                    <h3>Follow Us</h3>
-                    <div>
-                        <a href="#"><img src="/./../assets/icons/facebook.png" alt=""></a>
-                        <a href="#"><img src="/./../assets/icons/twitter.png" alt=""></a>
-                        <a href="#"><img src="/./../assets/icons/instagram.png" alt=""></a>
+                <div class="newsletter">
+                    <h4 class="title">Subscribe To<br>Our Newsletter<h4>
+                    <div class="field">
+                        <input type="email" id="newsletter" placeholder="Enter your email">
+                        <input type="submit" id="newsletter-submit" value="" class="news">
+                    </div>
+                    <div class="social-media">
+                        <a href=""><img src="/./../assets/icons/facebook.svg"></a>
+                        <a href=""><img src="/./../assets/icons/twitter.svg"></a>
+                        <a href=""><img src="/./../assets/icons/instagram.svg"></a>
+                        <a href=""><img src="/./../assets/icons/youtube.svg"></a>
                     </div>
                 </div>
 
-                <div class="stay-updated">
-                    <h3>Want to stay updated with our latest offer ?</h3>
-                    <input type="email" placeholder="Enter your email">
-                    <input class="type1" type="submit" value="Sign Up">
-                </div>
+                <ul>
+                    <h4 class="title">Service</h4>
+                    <li><a href="">Online Order</a></li>
+                    <li><a href="">Pre-Reservation</a></li>
+                    <li><a href="">24/7 Services</a></li>
+                </ul>
+
+                <ul>
+                    <h4 class="title">Quick Links</h4>
+                    <li><a href="">Menu</a></li>
+                    <li><a href="">Reviews</a></li>
+                    <li><a href="">Reserve Table</a></li>
+                    <li><a href="">Order Food</a></li>
+                </ul>
+
+                <ul>
+                    <h4 class="title">About</h4>
+                    <li><a href="">Our Story</a></li>
+                    <li><a href="">Career</a></li>
+                </ul>
+
+                <ul>
+                    <h4 class="title">Help</h4>
+                    <li><a href="">Contact Us</a></li>
+                    <li><a href="">FAQ</a></li>
+                </ul>
             </div>
             <div class="copyright">© 2023 Kevin Slim. All Rights Reserved.</div>
         </footer>

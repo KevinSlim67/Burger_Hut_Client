@@ -51,7 +51,7 @@
   gap: 0.4rem;
   position: relative;
   overflow-x: hidden;
-  margin-top: 1rem;
+  margin: 2rem 0;
   animation: slideFromTop 1s;
 }
 
@@ -90,7 +90,7 @@
 .offer {
   position: relative;
   height: clamp(200px, 45vw, 550px);
-  border-radius: 2rem;
+  border-radius: 1em;
   background: url(/./../assets/order/pattern3.jpg);
   background-repeat: repeat;
   overflow: hidden;
@@ -161,7 +161,6 @@
   height: 3rem;
   display: flex;
   gap: 0.5rem;
-  width: 100%;
 }
 
 .selectors input[type="text"] {
@@ -211,11 +210,11 @@
 
 /* category-list----------------------------- */
 .category-list {
-  width: 100%;
   height: 2.8rem;
   display: flex;
   gap: 0.5rem;
-  overflow-x: scroll;
+  justify-content: center;
+  overflow-x: hidden;
 }
 
 .category-list button {
@@ -237,19 +236,19 @@
   color: white;
 }
 
-@media (min-width: 600px) {
+@media (pointer: coarse) {
   .category-list {
-    overflow-x: hidden;
-    justify-content: center;
+    overflow-x: scroll;
   }
 }
 /* ------------------------------------------ */
 
 /* food-list ----------------------------- */
 .food-list {
-  width: 100%;
   display: flex;
   justify-content: center;
+  position: relative;
+  min-height: 10rem;
 }
 
 .food-list .layout {
@@ -419,6 +418,12 @@
 @media (min-width: 600px) {
   .food-list .layout {
     gap: min(2vw, 1.5rem);
+  }
+}
+
+@media (min-width: 600px) and (max-width: 900px) {
+  .food-list .layout {
+    justify-content: center;
   }
 }
 /* ------------------------------------------ */

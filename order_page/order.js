@@ -14,6 +14,12 @@ for (let i = 0; i < buttons.length; i++) {
 
 //remove all items from current list, then get list of food items with specific category from server
 function getCategoryItems(cat) {
+    const list = document.getElementById('food-list');
+    list.innerHTML = '<spinner-component></spinner-component>';
+
+    const spinner = document.querySelector('spinner-component');
+    spinner.setDisplayBlock();
+    
     highlightSelectedItem(cat);
 
     fetch(`${url}/foods/${cat}`, {

@@ -1,7 +1,6 @@
 const spinner = document.querySelector('spinner-component');
 const video = document.querySelector('.video');
 
-
 videoNotLoaded();
 
 function videoLoaded() {

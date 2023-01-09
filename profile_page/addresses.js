@@ -225,7 +225,7 @@ function createAddress() {
                 <div class="shape1"></div>
                 <div class="shape2"></div>
                 <button class="exit" onclick="closeCreateAddress()"></button>
-                <h2>Create New Address</h2>
+                <h2 class="title">Create New Address</h2>
 
                 <div class="input-box">
                     <input class="style1" type="text" name="name" id="name" placeholder=" "/>

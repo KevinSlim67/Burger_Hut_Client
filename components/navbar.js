@@ -133,7 +133,7 @@ function userSignedIn() {
         <a href="/./../cart_page/cart.html"
          class="nav-cart" title="Cart"></a>
 
-        <span>${sessionStorage.getItem('firstName')}</span>
+        <span class="name">${sessionStorage.getItem('firstName')}</span>
         <button class="sign sign-out">Sign out</button>
     </div>
 
