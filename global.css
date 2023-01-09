@@ -555,7 +555,7 @@ footer .newsletter input[type="email"] {
 
 footer .newsletter input[type="email"]:focus {
   outline: none;
-  border-color: var(--gray-200);
+  border-color: var(--gray-400);
 }
 
 footer .newsletter input[type="submit"] {

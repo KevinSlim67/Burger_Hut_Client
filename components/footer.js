@@ -23,29 +23,29 @@ class Footer extends HTMLElement {
 
                 <ul>
                     <h4 class="title">Service</h4>
-                    <li><a href="">Online Order</a></li>
-                    <li><a href="">Pre-Reservation</a></li>
-                    <li><a href="">24/7 Services</a></li>
+                    <li><a href="/./../order_page/order.html">Online Order</a></li>
+                    <li><a href="/./../order_page/order.html">Pre-Reservation</a></li>
+                    <li><a href="/./../order_page/order.html">24/7 Services</a></li>
                 </ul>
 
                 <ul>
                     <h4 class="title">Quick Links</h4>
-                    <li><a href="">Menu</a></li>
-                    <li><a href="">Reviews</a></li>
-                    <li><a href="">Reserve Table</a></li>
-                    <li><a href="">Order Food</a></li>
+                    <li><a href="/./../order_page/order.html">Menu</a></li>
+                    <li><a href="/./../home_page/home.html#reviews">Reviews</a></li>
+                    <li><a href="/./../order_page/order.html">Reserve Table</a></li>
+                    <li><a href="/./../order_page/order.html">Order Food</a></li>
                 </ul>
 
                 <ul>
                     <h4 class="title">About</h4>
-                    <li><a href="">Our Story</a></li>
-                    <li><a href="">Career</a></li>
+                    <li><a href="/./../home_page/home.html#about-us">Our Story</a></li>
+                    <li><a href="/./../home_page/home.html#hiring">Career</a></li>
                 </ul>
 
                 <ul>
                     <h4 class="title">Help</h4>
-                    <li><a href="">Contact Us</a></li>
-                    <li><a href="">FAQ</a></li>
+                    <li><a href="/./../contact_page/contact.html#contact">Contact Us</a></li>
+                    <li><a href="/./../contact_page/contact.html#faq">FAQ</a></li>
                 </ul>
             </div>
             <div class="copyright">© 2023 Kevin Slim. All Rights Reserved.</div>
